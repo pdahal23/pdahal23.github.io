@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pragati Dahal — Agricultural & Applied Economics</title>
+  <title>Pragati Dahal</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -15,596 +15,278 @@
       --gold: #c9a84c;
       --rule: #e2ddd7;
       --sidebar-bg: #1e1a16;
-      --sidebar-text: #d4cfc9;
       --sidebar-muted: #8a8178;
       --mono: 'JetBrains Mono', monospace;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Inter', sans-serif;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.7; }
 
-    body {
-      background: var(--cream);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-size: 15px;
-      line-height: 1.7;
-      display: flex;
-      min-height: 100vh;
-    }
-
-    /* ── SIDEBAR ── */
-    .sidebar {
-      width: 260px;
-      min-height: 100vh;
+    nav {
+      position: sticky; top: 0;
       background: var(--sidebar-bg);
-      position: fixed;
-      top: 0; left: 0;
-      display: flex;
-      flex-direction: column;
-      padding: 48px 32px;
       z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
+    .nav-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: #fff; text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sidebar-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: #fff; }
 
-    .sidebar-name {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: #fff;
-      letter-spacing: 0.01em;
-      line-height: 1.2;
-      margin-bottom: 4px;
-    }
-
-    .sidebar-title {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--maroon-light);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-    }
-
-    .sidebar-avatar {
-      width: 88px;
-      height: 88px;
-      border-radius: 50%;
-      background: var(--maroon);
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-size: 2rem;
-      color: #fff;
-      font-weight: 300;
-      border: 2px solid rgba(255,255,255,0.1);
-    }
-
-    .sidebar nav {
-      flex: 1;
-    }
-
-    .sidebar nav a {
-      display: block;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--sidebar-muted);
-      text-decoration: none;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: color 0.2s;
-    }
-
-    .sidebar nav a:hover,
-    .sidebar nav a.active {
-      color: #fff;
-    }
-
-    .sidebar nav a::before {
-      content: '—  ';
-      color: var(--maroon);
-      font-size: 0.6rem;
-    }
-
-    .sidebar-links {
-      margin-top: 40px;
-      display: flex;
-      gap: 14px;
-    }
-
-    .sidebar-links a {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--sidebar-muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      transition: color 0.2s;
-    }
-
-    .sidebar-links a:hover { color: var(--gold); }
-
-    /* ── MAIN ── */
-    .main {
-      margin-left: 260px;
-      flex: 1;
-      max-width: 860px;
-      padding: 72px 64px;
-    }
-
-    /* ── SECTION ── */
-    section {
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fadeUp 0.5s ease forwards;
-    }
-
-    section:nth-child(1) { animation-delay: 0.1s; }
-    section:nth-child(2) { animation-delay: 0.2s; }
-    section:nth-child(3) { animation-delay: 0.3s; }
-    section:nth-child(4) { animation-delay: 0.4s; }
-    section:nth-child(5) { animation-delay: 0.5s; }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: none; }
-    }
-
-    .section-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--maroon);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--rule);
-    }
-
-    h1 {
-      font-family: var(--serif);
-      font-size: 3.2rem;
-      font-weight: 300;
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 8px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--maroon);
-    }
-
-    h2 {
-      font-family: var(--serif);
-      font-size: 1.8rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin-bottom: 24px;
-    }
-
-    .hero-role {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 28px;
-    }
-
-    .hero-bio {
-      font-size: 1.05rem;
-      color: var(--ink-soft);
-      max-width: 580px;
-      line-height: 1.8;
-      margin-bottom: 32px;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-
-    .tag {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      padding: 4px 12px;
-      border: 1px solid var(--rule);
-      color: var(--ink-soft);
-      border-radius: 2px;
-    }
-
-    .tag:hover {
-      border-color: var(--maroon);
-      color: var(--maroon);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #fff;
-      background: var(--maroon);
-      padding: 10px 22px;
-      text-decoration: none;
-      border-radius: 2px;
-      transition: background 0.2s;
-    }
-
+    .hero { max-width: 900px; margin: 0 auto; padding: 72px 48px 64px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
+    .hero-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid var(--rule); }
+    .hero-right h1 { font-family: var(--serif); font-size: 2.6rem; font-weight: 400; line-height: 1.15; color: var(--ink); margin-bottom: 6px; }
+    .hero-right h1 em { font-style: italic; color: var(--maroon); }
+    .hero-role { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 20px; }
+    .hero-bio { font-size: 1rem; color: var(--ink-soft); line-height: 1.85; margin-bottom: 24px; max-width: 540px; }
+    .hero-bio a { color: var(--maroon); text-decoration: none; border-bottom: 1px solid var(--rule); transition: border-color 0.2s; }
+    .hero-bio a:hover { border-color: var(--maroon); }
+    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--maroon); padding: 9px 18px; text-decoration: none; border-radius: 2px; transition: background 0.2s; }
     .btn:hover { background: var(--maroon-light); }
+    .btn-ghost { background: transparent; color: var(--maroon); border: 1px solid var(--maroon); }
+    .btn-ghost:hover { background: var(--maroon); color: #fff; }
+    .social-icons { display: flex; gap: 16px; }
+    .social-icons a { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sidebar-muted); text-decoration: none; transition: color 0.2s; }
+    .social-icons a:hover { color: var(--maroon); }
 
-    .btn-outline {
-      background: transparent;
-      color: var(--maroon);
-      border: 1px solid var(--maroon);
-    }
+    .content { max-width: 900px; margin: 0 auto; padding: 0 48px 80px; }
+    .section { margin-bottom: 72px; opacity: 0; transform: translateY(12px); animation: fadeUp 0.5s ease forwards; }
+    .section:nth-child(1) { animation-delay: 0.15s; }
+    .section:nth-child(2) { animation-delay: 0.25s; }
+    .section:nth-child(3) { animation-delay: 0.35s; }
+    .section:nth-child(4) { animation-delay: 0.45s; }
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
 
-    .btn-outline:hover {
-      background: var(--maroon);
-      color: #fff;
-    }
+    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+    .section-header h2 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; color: var(--ink); white-space: nowrap; }
+    .section-header::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
 
-    /* ── RESEARCH CARD ── */
-    .research-card {
-      border-left: 2px solid var(--rule);
-      padding: 20px 24px;
-      margin-bottom: 20px;
-      transition: border-color 0.2s;
-    }
+    .posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .post-card { border: 1px solid var(--rule); border-radius: 3px; overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; }
+    .post-card:hover { border-color: var(--maroon); transform: translateY(-2px); }
+    .post-card-img { width: 100%; height: 140px; background: var(--sidebar-bg); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.6rem; color: var(--sidebar-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .post-card-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; }
+    .post-card-date { font-family: var(--mono); font-size: 0.62rem; color: var(--sidebar-muted); letter-spacing: 0.06em; margin-bottom: 8px; }
+    .post-card-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 8px; }
+    .post-card:hover .post-card-title { color: var(--maroon); }
+    .post-card-desc { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.6; flex: 1; }
 
-    .research-card:hover {
-      border-color: var(--maroon);
-    }
+    .research-item { display: grid; grid-template-columns: 1fr 160px; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+    .research-item:first-child { border-top: 1px solid var(--rule); }
+    .research-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+    .research-status { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .research-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 12px; }
+    .research-links { display: flex; gap: 14px; }
+    .research-links a { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--maroon); text-decoration: none; border: 1px solid var(--rule); padding: 4px 10px; border-radius: 2px; transition: border-color 0.2s, background 0.2s; }
+    .research-links a:hover { border-color: var(--maroon); background: rgba(122,25,51,0.05); }
+    .research-img-placeholder { width: 160px; height: 100px; background: linear-gradient(135deg, #1e1a16 0%, #3d2a1e 100%); border-radius: 2px; display: flex; align-items: center; justify-content: center; }
+    .research-img-placeholder span { font-family: var(--mono); font-size: 0.55rem; color: var(--sidebar-muted); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; padding: 8px; }
 
-    .research-card h3 {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
+    .course-card { border: 1px solid var(--rule); border-radius: 3px; padding: 20px 24px; margin-bottom: 16px; transition: border-color 0.2s; }
+    .course-card:hover { border-color: var(--maroon); }
+    .course-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .course-meta { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .course-desc { font-size: 0.85rem; color: var(--ink-soft); line-height: 1.6; }
 
-    .research-card .status {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; }
+    .contact-label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sidebar-muted); margin-bottom: 4px; }
+    .contact-value { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+    .contact-value a { color: var(--maroon); text-decoration: none; }
+    .contact-value a:hover { text-decoration: underline; }
 
-    .research-card p {
-      font-size: 0.9rem;
-      color: var(--ink-soft);
-      line-height: 1.7;
-      margin-bottom: 12px;
-    }
+    footer { background: var(--sidebar-bg); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; }
+    footer p { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; color: var(--sidebar-muted); }
+    footer a { color: var(--sidebar-muted); text-decoration: none; }
+    footer a:hover { color: #fff; }
 
-    .research-card .card-links {
-      display: flex;
-      gap: 16px;
-    }
-
-    .research-card .card-links a {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--maroon);
-      text-decoration: none;
-    }
-
-    .research-card .card-links a:hover {
-      text-decoration: underline;
-    }
-
-    /* ── BLOG CARD ── */
-    .post-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .post-item {
-      display: flex;
-      align-items: baseline;
-      gap: 24px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--rule);
-      text-decoration: none;
-      color: inherit;
-      transition: padding-left 0.2s;
-    }
-
-    .post-item:hover {
-      padding-left: 8px;
-    }
-
-    .post-date {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--sidebar-muted);
-      letter-spacing: 0.06em;
-      min-width: 90px;
-    }
-
-    .post-title {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      color: var(--ink);
-    }
-
-    .post-item:hover .post-title {
-      color: var(--maroon);
-    }
-
-    /* ── CV TABLE ── */
-    .cv-row {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 16px 32px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--rule);
-      align-items: start;
-    }
-
-    .cv-year {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--sidebar-muted);
-      letter-spacing: 0.06em;
-      padding-top: 2px;
-    }
-
-    .cv-content h4 {
-      font-family: var(--serif);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: 2px;
-    }
-
-    .cv-content p {
-      font-size: 0.85rem;
-      color: var(--ink-soft);
-    }
-
-    /* ── FOOTER ── */
-    .site-footer {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      color: var(--sidebar-muted);
-      padding-top: 40px;
-      border-top: 1px solid var(--rule);
-      margin-top: 40px;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 800px) {
-      .sidebar {
-        position: relative;
-        width: 100%;
-        min-height: auto;
-        padding: 32px 24px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 16px;
-      }
-      .sidebar-avatar { margin-bottom: 0; width: 56px; height: 56px; font-size: 1.2rem; }
-      .sidebar nav { width: 100%; }
-      .sidebar nav a { display: inline-block; margin-right: 12px; border: none; }
-      .main { margin-left: 0; padding: 40px 24px; }
+    @media (max-width: 720px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 14px; }
+      .hero { grid-template-columns: 1fr; padding: 40px 24px; gap: 24px; }
+      .hero-photo { width: 120px; height: 120px; }
+      .content { padding: 0 24px 60px; }
+      .posts-grid { grid-template-columns: 1fr; }
+      .research-item { grid-template-columns: 1fr; }
+      .research-img-placeholder { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 8px; padding: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-avatar">PD</div>
-    <div>
-      <div class="sidebar-name">Pragati Dahal</div>
-      <div class="sidebar-title">PhD Student · VT</div>
+  <nav>
+    <a href="#about" class="nav-name">Pragati Dahal</a>
+    <ul class="nav-links">
+      <li><a href="#about">Home</a></li>
+      <li><a href="#posts">Posts</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="CV.pdf" target="_blank">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <div class="hero">
+      <img src="Profile_pic.jpg" alt="Pragati Dahal" class="hero-photo" />
+      <div class="hero-right">
+        <h1>Pragati <em>Dahal</em></h1>
+        <div class="hero-role">PhD Student · Agricultural & Applied Economics · Virginia Tech</div>
+        <p class="hero-bio">
+          I am a first-year PhD student at <a href="https://www.aaec.vt.edu/" target="_blank">Virginia Tech</a>, 
+          advised by <a href="https://aaec.vt.edu/people/faculty/wang-le.html" target="_blank">Dr. Le Wang</a>. 
+          My research interests are in applied econometrics, health economics, and causal inference.
+          My dissertation examines the causal effect of broadband expansion on county-level mental health outcomes 
+          using staggered difference-in-differences and causal machine learning methods. I also contribute to the 
+          <a href="https://dspg.vt.edu/" target="_blank">Data Science for the Public Good</a> program at Virginia Tech.
+        </p>
+        <div class="hero-links">
+          <a href="CV.pdf" target="_blank" class="btn">Download CV</a>
+          <a href="mailto:pdahal@vt.edu" class="btn btn-ghost">Email Me</a>
+        </div>
+        <div class="social-icons">
+          <a href="mailto:pdahal@vt.edu">Email</a>
+          <a href="https://linkedin.com/in/pragatidahal9843" target="_blank">LinkedIn</a>
+          <a href="https://github.com/pdahal23" target="_blank">GitHub</a>
+        </div>
+      </div>
     </div>
-    <nav>
-      <a href="#about" class="active">About</a>
-      <a href="#research">Research</a>
-      <a href="#posts">Posts</a>
-      <a href="#teaching">Teaching</a>
-      <a href="#cv">CV</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="sidebar-links">
-      <a href="mailto:pdahal23@vt.edu">Email</a>
-      <a href="https://github.com/pdahal23" target="_blank">GitHub</a>
+  </section>
+
+  <div class="content">
+
+    <div class="section" id="posts">
+      <div class="section-header"><h2>Posts</h2></div>
+      <div class="posts-grid">
+        <a href="#" class="post-card">
+          <div class="post-card-img">Coming Soon</div>
+          <div class="post-card-body">
+            <div class="post-card-date">Coming 2025</div>
+            <div class="post-card-title">Staggered DiD with Callaway–Sant'Anna: A Practical Guide</div>
+            <div class="post-card-desc">A practical walkthrough of implementing staggered difference-in-differences with real FCC broadband data.</div>
+          </div>
+        </a>
+        <a href="#" class="post-card">
+          <div class="post-card-img">Coming Soon</div>
+          <div class="post-card-body">
+            <div class="post-card-date">Coming 2025</div>
+            <div class="post-card-title">Causal Inference for Undergrads: What the Data Is Actually Telling You</div>
+            <div class="post-card-desc">An accessible introduction to causal inference — the difference between correlation and causation, and why it matters for policy.</div>
+          </div>
+        </a>
+        <a href="#" class="post-card">
+          <div class="post-card-img">Coming Soon</div>
+          <div class="post-card-body">
+            <div class="post-card-date">Coming 2025</div>
+            <div class="post-card-title">How to Summarize and Visualize Data: A DSPG Lecture</div>
+            <div class="post-card-desc">Lecture notes and code from the DSPG Summer 2026 workshop on exploratory data analysis and visualization.</div>
+          </div>
+        </a>
+        <a href="#" class="post-card">
+          <div class="post-card-img">Coming Soon</div>
+          <div class="post-card-body">
+            <div class="post-card-date">Coming 2025</div>
+            <div class="post-card-title">Why Does Broadband Affect Mental Health? A Mechanism Framework</div>
+            <div class="post-card-desc">Exploring the pathways through which broadband access may affect mental health — services access, social connectivity, and labor market effects.</div>
+          </div>
+        </a>
+      </div>
     </div>
-  </aside>
 
-  <!-- MAIN CONTENT -->
-  <main class="main">
+    <div class="section" id="research">
+      <div class="section-header"><h2>Research</h2></div>
 
-    <!-- ABOUT -->
-    <section id="about">
-      <div class="section-label">About</div>
-      <h1>Pragati<br><em>Dahal</em></h1>
-      <div class="hero-role">PhD Student · Agricultural & Applied Economics · Virginia Tech</div>
-      <p class="hero-bio">
-        I am a first-year PhD student at Virginia Tech with research interests in applied econometrics, health economics, and causal inference. My dissertation examines the causal effect of broadband expansion on county-level mental health outcomes using staggered difference-in-differences and causal machine learning methods.
-      </p>
-      <div class="tags">
-        <span class="tag">Applied Econometrics</span>
-        <span class="tag">Causal Inference</span>
-        <span class="tag">Health Economics</span>
-        <span class="tag">Machine Learning</span>
-        <span class="tag">Digital Equity</span>
-      </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="#contact" class="btn">Get in touch</a>
-        <a href="#cv" class="btn btn-outline">View CV</a>
-      </div>
-    </section>
-
-    <!-- RESEARCH -->
-    <section id="research">
-      <div class="section-label">Research</div>
-      <h2>Working Papers</h2>
-
-      <div class="research-card">
-        <h3>Broadband Expansion and Mental Health Outcomes</h3>
-        <div class="status">Working Paper · 2024–present</div>
-        <p>
-          This paper examines the causal effect of broadband internet expansion on county-level mental health outcomes in the United States, using FCC Form 477 data and staggered difference-in-differences methods (Callaway–Sant'Anna). Heterogeneity analysis uses causal forest methods.
-        </p>
-        <div class="card-links">
-          <a href="#">Draft (coming soon)</a>
-          <a href="#">Slides</a>
-        </div>
-      </div>
-
-      <div class="research-card">
-        <h3>Campaign Funds for Childcare and Women's Political Candidacy</h3>
-        <div class="status">Under Review · 2024</div>
-        <p>
-          Examines the effect of childcare-focused campaign financing on women's entry into political candidacy, with implications for gender equity in political representation.
-        </p>
-        <div class="card-links">
-          <a href="#">Draft (coming soon)</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- POSTS -->
-    <section id="posts">
-      <div class="section-label">Posts</div>
-      <h2>Writing</h2>
-      <div class="post-list">
-        <a href="#" class="post-item">
-          <span class="post-date">Coming 2025</span>
-          <span class="post-title">Staggered DiD with Callaway–Sant'Anna: a practical guide</span>
-        </a>
-        <a href="#" class="post-item">
-          <span class="post-date">Coming 2025</span>
-          <span class="post-title">Causal Inference for Undergrads: what the data is actually telling you</span>
-        </a>
-        <a href="#" class="post-item">
-          <span class="post-date">Coming 2025</span>
-          <span class="post-title">How to summarize and visualize data: a DSPG lecture</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- TEACHING -->
-    <section id="teaching">
-      <div class="section-label">Teaching</div>
-      <h2>Courses & Lectures</h2>
-      <div class="research-card">
-        <h3>Causal Inference & Data Visualization</h3>
-        <div class="status">DSPG Summer 2026 · Virginia Tech</div>
-        <p>
-          An applied lecture introducing undergraduate students to causal inference concepts and data visualization techniques using real-world public data. Topics include correlation vs. causation, difference-in-differences, and exploratory data analysis.
-        </p>
-        <div class="card-links">
-          <a href="#">Slides (coming soon)</a>
-          <a href="#">Code</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CV -->
-    <section id="cv">
-      <div class="section-label">CV</div>
-      <h2>Curriculum Vitae</h2>
-
-      <div style="margin-bottom:28px;">
-        <div style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--maroon);margin-bottom:12px;">Education</div>
-        <div class="cv-row">
-          <div class="cv-year">2023–present</div>
-          <div class="cv-content">
-            <h4>PhD, Agricultural & Applied Economics</h4>
-            <p>Virginia Tech, Blacksburg VA · Advisor: Dr. Le Wang</p>
+      <div class="research-item">
+        <div>
+          <div class="research-title">Broadband Expansion and Mental Health Outcomes: Causal Evidence from U.S. Counties</div>
+          <div class="research-status">Dissertation Chapter · Work in Progress</div>
+          <p class="research-desc">Examines the causal effect of broadband infrastructure rollout on county-level mental health using staggered difference-in-differences and FCC Form 477 deployment data. Applies causal forest methods to identify heterogeneous treatment effects and characterize which county subpopulations benefit most from broadband access.</p>
+          <div class="research-links">
+            <a href="#">Draft (coming soon)</a>
+            <a href="#">Slides</a>
           </div>
         </div>
-        <div class="cv-row">
-          <div class="cv-year">2021–2023</div>
-          <div class="cv-content">
-            <h4>MS, Agricultural Economics</h4>
-            <p>University of Idaho</p>
+        <div class="research-img-placeholder"><span>Broadband &amp; Mental Health</span></div>
+      </div>
+
+      <div class="research-item">
+        <div>
+          <div class="research-title">The Impact of Campaign Funds for Childcare Policies on Female Representation</div>
+          <div class="research-status">Submitted · Gender and Politics</div>
+          <p class="research-desc">Uses two-way fixed effects and staggered difference-in-differences (Callaway–Sant'Anna) to estimate the causal effect of Campaign Funds for Childcare (CFCC) policies on women's candidacy across federal, state, and local elections. Finds heterogeneous effects with local elections showing meaningful increases in female participation.</p>
+          <div class="research-links">
+            <a href="#">Draft (coming soon)</a>
           </div>
         </div>
+        <div class="research-img-placeholder"><span>Gender &amp; Politics</span></div>
       </div>
 
-      <div>
-        <div style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--maroon);margin-bottom:12px;">Experience</div>
-        <div class="cv-row">
-          <div class="cv-year">Summer 2026</div>
-          <div class="cv-content">
-            <h4>Data Science for the Public Good (DSPG)</h4>
-            <p>Virginia Tech</p>
+      <div class="research-item">
+        <div>
+          <div class="research-title">Economic Efficiency of Mineral Oil–Insecticide Combinations in PVY Management</div>
+          <div class="research-status">Manuscript · Work in Progress</div>
+          <p class="research-desc">Evaluates six mineral oil and insecticide spray programs using multi-year field trial data from Idaho and a partial budgeting framework. Finds the at-plant insecticide plus weekly oil treatment generates the highest net revenue across potato size classes.</p>
+          <div class="research-links">
+            <a href="#">Draft (coming soon)</a>
           </div>
         </div>
+        <div class="research-img-placeholder"><span>Agricultural Economics</span></div>
       </div>
+    </div>
 
-      <div style="margin-top:28px;">
-        <a href="#" class="btn">Download full CV (PDF)</a>
+    <div class="section" id="courses">
+      <div class="section-header"><h2>Courses</h2></div>
+      <div class="course-card">
+        <div class="course-title">Causal Inference & Data Visualization for Public Good</div>
+        <div class="course-meta">DSPG Summer 2026 · Virginia Tech</div>
+        <p class="course-desc">An applied lecture introducing undergraduate students to causal inference and data visualization using real-world public datasets. Topics include correlation vs. causation, difference-in-differences, exploratory data analysis, and communicating results to non-technical audiences.</p>
       </div>
-    </section>
+    </div>
 
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-label">Contact</div>
-      <h2>Get in Touch</h2>
-      <p style="color:var(--ink-soft);max-width:480px;margin-bottom:24px;">
-        I am always happy to discuss research, methods, or potential collaborations. The best way to reach me is by email.
-      </p>
-      <div style="font-family:var(--mono);font-size:0.8rem;color:var(--ink);margin-bottom:8px;">
-        pdahal23@vt.edu
+    <div class="section" id="contact">
+      <div class="section-header"><h2>Contact</h2></div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Blacksburg, Virginia</div>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:pdahal@vt.edu">pdahal@vt.edu</a></div>
+        </div>
+        <div>
+          <div class="contact-label">Affiliation</div>
+          <div class="contact-value">
+            <a href="https://www.aaec.vt.edu/" target="_blank">Dept. of Agricultural & Applied Economics</a><br>Virginia Tech
+          </div>
+        </div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value"><a href="https://linkedin.com/in/pragatidahal9843" target="_blank">pragatidahal9843</a></div>
+        </div>
       </div>
-      <div style="font-family:var(--mono);font-size:0.75rem;color:var(--sidebar-muted);">
-        Department of Agricultural & Applied Economics<br>
-        Virginia Tech · Blacksburg, VA
-      </div>
-    </section>
+    </div>
 
-    <footer class="site-footer">
-      © 2026 Pragati Dahal · Built with HTML & GitHub Pages
-    </footer>
+  </div>
 
-  </main>
+  <footer>
+    <p>© 2026 Pragati Dahal · Virginia Tech</p>
+    <p>Built with HTML &amp; <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+  </footer>
 
   <script>
-    // Active nav on scroll
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.sidebar nav a');
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
     window.addEventListener('scroll', () => {
       let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+      navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? '#fff' : ''; });
     });
   </script>
 

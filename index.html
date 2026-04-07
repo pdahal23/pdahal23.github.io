@@ -128,7 +128,7 @@
     /* ── RESEARCH ITEMS ── */
     .research-list { border-top: 1px solid var(--rule); }
     .research-item { border-bottom: 1px solid var(--rule); padding: 28px 0; }
-    .research-item-inner { display: grid; grid-template-columns: 1fr 150px; gap: 28px; align-items: start; }
+    .research-item-inner { display: block; }
     .research-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.35; cursor: pointer; transition: color var(--transition); letter-spacing: -0.01em; }
     .research-title:hover { color: var(--maroon); }
     .research-status { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0; display: flex; align-items: center; gap: 6px; }
@@ -305,7 +305,6 @@
               <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
                 <span class="research-toggle-icon">&#9660;</span> Abstract
               </button></div>
-            <div class="research-img-placeholder"><span>Broadband &amp; Mental Health</span></div>
           </div>
         </div>
 
@@ -318,7 +317,6 @@
               <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
                 <span class="research-toggle-icon">&#9660;</span> Abstract
               </button></div>
-            <div class="research-img-placeholder"><span>Gender &amp; Politics</span></div>
           </div>
         </div>
 
@@ -331,7 +329,6 @@
               <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
                 <span class="research-toggle-icon">&#9660;</span> Abstract
               </button></div>
-            <div class="research-img-placeholder"><span>Agricultural Economics</span></div>
           </div>
         </div>
 

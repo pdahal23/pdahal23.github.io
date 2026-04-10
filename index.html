@@ -91,67 +91,67 @@
     .main { max-width: 960px; margin: 0 auto; padding: 0 48px 80px; }
 
     /* ── SECTION ── */
-    .section { margin-top: 72px; }
-    .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
-    .section-num { font-family: var(--mono); font-size: 0.62rem; color: var(--maroon); letter-spacing: 0.1em; min-width: 24px; }
-    .section-header h2 { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--ink); white-space: nowrap; }
-    .section-header::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
 
-    /* ── POST CARDS ── */
-    .posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .post-card { border: 1px solid var(--rule); border-radius: var(--radius); overflow: hidden; text-decoration: none; color: inherit; transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition); display: flex; flex-direction: column; background: #fff; }
-    .post-card:hover { border-color: var(--maroon); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-    .post-card-thumb { width: 100%; height: 130px; background: linear-gradient(135deg, var(--dark) 0%, #3d2a1e 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .post-card-thumb::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(122,25,51,0.3) 0%, transparent 70%); }
-    .post-card-thumb span { font-family: var(--mono); font-size: 0.58rem; color: rgba(255,255,255,0.3); letter-spacing: 0.12em; text-transform: uppercase; z-index: 1; }
-    .post-card-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; }
-    .post-card-date { font-family: var(--mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 8px; }
-    .post-card-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; color: var(--ink); line-height: 1.35; margin-bottom: 8px; transition: color var(--transition); }
-    .post-card:hover .post-card-title { color: var(--maroon); }
-    .post-card-desc { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.65; flex: 1; }
+    /* ── SECTION LAYOUT (Matteo: title left, content right) ── */
+    .section { margin-top: 64px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
+    .section-header { margin-bottom: 0; position: sticky; top: 80px; align-self: start; }
+    .section-header h2 { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--ink); letter-spacing: -0.02em; }
+    .section-header::after { display: none; }
+    .section-num { display: none; }
+    .section-body { min-width: 0; }
 
-    /* ── RESEARCH ITEMS ── */
+    /* ── POSTS (Matteo style: vertical list, title+desc+date, no cards) ── */
+    .posts-grid { display: flex; flex-direction: column; gap: 0; }
+    .post-card { display: flex; align-items: flex-start; gap: 24px; text-decoration: none; color: inherit; padding: 24px 0; border-bottom: 1px solid var(--rule); transition: opacity var(--transition); }
+    .post-card:first-child { border-top: 1px solid var(--rule); }
+    .post-card:hover { opacity: 0.75; }
+    .post-card-thumb { width: 80px; height: 80px; flex-shrink: 0; background: var(--cream-dark); border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; justify-content: center; order: 2; }
+    .post-card-thumb span { font-size: 0.6rem; color: var(--ink-muted); text-align: center; padding: 4px; }
+    .post-card-body { flex: 1; order: 1; }
+    .post-card-date { font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 6px; }
+    .post-card-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); line-height: 1.35; margin-bottom: 6px; }
+    .post-card-desc { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.65; }
+
+    /* ── RESEARCH (Matteo style) ── */
     .research-list { border-top: 1px solid var(--rule); }
-    .research-item { border-bottom: 1px solid var(--rule); padding: 28px 0; }
+    .research-item { border-bottom: 1px solid var(--rule); padding: 24px 0; }
     .research-item-inner { display: block; }
-    .research-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.35; cursor: pointer; transition: color var(--transition); letter-spacing: -0.01em; }
+    .research-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.4; cursor: pointer; transition: color var(--transition); }
     .research-title:hover { color: var(--maroon); }
-    .research-status { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0; display: flex; align-items: center; gap: 6px; }
-    .research-status::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .research-abstract { font-size: 0.87rem; color: var(--ink-soft); line-height: 1.75; margin-top: 12px; overflow: hidden; max-height: 0; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
-    .research-abstract.open { max-height: 300px; opacity: 1; }
-    .research-toggle { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--maroon); background: none; border: none; cursor: pointer; padding: 8px 0 0; display: flex; align-items: center; gap: 6px; transition: opacity var(--transition); }
+    .research-status { font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 8px; }
+    .research-abstract { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.75; margin-top: 10px; overflow: hidden; max-height: 0; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
+    .research-abstract.open { max-height: 400px; opacity: 1; }
+    .research-toggle { font-size: 0.78rem; color: var(--maroon); background: none; border: none; cursor: pointer; padding: 8px 0 0; transition: opacity var(--transition); display: flex; align-items: center; gap: 4px; }
     .research-toggle:hover { opacity: 0.7; }
     .research-toggle-icon { display: inline-block; transition: transform 0.3s ease; }
     .research-toggle.open .research-toggle-icon { transform: rotate(180deg); }
-    .research-links { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
-    .research-link { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--maroon); text-decoration: none; border: 1px solid var(--rule); padding: 4px 12px; border-radius: 20px; transition: all var(--transition); }
-    .research-link:hover { border-color: var(--maroon); background: var(--maroon-pale); }
-    .research-img-placeholder { width: 150px; height: 90px; background: linear-gradient(135deg, var(--dark) 0%, #3d2a1e 100%); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .research-img-placeholder span { font-family: var(--mono); font-size: 0.52rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-transform: uppercase; text-align: center; padding: 8px; line-height: 1.6; }
+    .research-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+    .research-link { font-size: 0.78rem; color: var(--maroon); text-decoration: none; }
+    .research-link:hover { text-decoration: underline; }
 
     /* ── EXPERIENCE ── */
     .experience-list { border-top: 1px solid var(--rule); }
-    .exp-item { border-bottom: 1px solid var(--rule); padding: 24px 0; display: grid; grid-template-columns: 1fr 150px; gap: 28px; align-items: start; }
+    .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 32px; border-bottom: 1px solid var(--rule); padding: 20px 0; align-items: start; }
+    .exp-left { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.6; padding-top: 3px; }
     .exp-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
-    .exp-meta { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-    .exp-meta::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .exp-desc { font-size: 0.87rem; color: var(--ink-soft); line-height: 1.75; }
+    .exp-meta { font-size: 0.82rem; color: var(--ink-muted); margin-bottom: 8px; }
+    .exp-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
     .exp-desc a { color: var(--maroon); text-decoration: none; }
     .exp-desc a:hover { text-decoration: underline; }
 
-    /* ── AWARDS ── */
-    .awards-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
-    .award-item { display: flex; align-items: baseline; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--rule); transition: background var(--transition); }
-    .award-item:hover { background: var(--maroon-pale); padding-left: 8px; }
-    .award-year { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em; min-width: 60px; }
-    .award-name { font-size: 0.92rem; color: var(--ink); flex: 1; }
-    .award-org { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.04em; }
+    /* ── AWARDS / PRESENTATIONS ── */
+    .awards-list { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+    .award-item { display: grid; grid-template-columns: 80px 1fr 160px; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--rule); align-items: start; }
+    .award-year { font-size: 0.82rem; color: var(--ink-muted); padding-top: 2px; }
+    .award-name { font-size: 0.95rem; color: var(--ink); line-height: 1.65; }
+    .award-org { font-size: 0.82rem; color: var(--ink-muted); text-align: right; padding-top: 2px; }
+    .award-org a { color: var(--maroon); text-decoration: none; }
+    .award-org a:hover { text-decoration: underline; }
 
     /* ── CONTACT ── */
-    .contact-intro { font-size: 0.97rem; color: var(--ink-soft); margin-bottom: 24px; line-height: 1.7; }
-    .contact-list { display: flex; flex-direction: column; gap: 14px; }
-    .contact-item { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; color: var(--ink); }
+    .contact-intro { font-size: 1rem; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.7; }
+    .contact-list { display: flex; flex-direction: column; gap: 16px; }
+    .contact-item { display: flex; align-items: center; gap: 14px; font-size: 0.95rem; color: var(--ink); }
     .contact-icon { font-size: 1rem; width: 22px; text-align: center; flex-shrink: 0; }
     .contact-item a { color: var(--maroon); text-decoration: none; transition: opacity var(--transition); }
     .contact-item a:hover { opacity: 0.75; text-decoration: underline; }
@@ -174,14 +174,12 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 760px) {
       nav { padding: 0 24px; }
-      .nav-links { gap: 14px; display: none; }
+      .nav-links { display: none; }
       .hero-section { padding: 48px 24px; }
       .hero-inner { grid-template-columns: 1fr; gap: 28px; }
-      .hero-photo { width: 120px; height: 120px; }
+      .hero-photo { width: 140px; height: 140px; }
       .main { padding: 0 24px 60px; }
       .posts-grid { grid-template-columns: 1fr; }
-      .research-item-inner, .exp-item { grid-template-columns: 1fr; }
-      .research-img-placeholder { display: none; }
       .contact-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 8px; padding: 24px; text-align: center; }
     }
@@ -192,25 +190,24 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-    <a href="#about" class="nav-name">Pragati Dahal</a>
-    <ul class="nav-links">
-      <li><a href="#about">Home</a></li>
-      <li><a href="#posts">Posts</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="CV.pdf" target="_blank">CV</a></li>
-      <li><a href="#conferences">Presentations</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+      <a href="#about" class="nav-name">Pragati Dahal</a>
+      <ul class="nav-links">
+        <li><a href="#about">Home</a></li>
+        <li><a href="#posts">Posts</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="CV.pdf" target="_blank">CV</a></li>
+        <li><a href="#conferences">Presentations</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (full width, unchanged) -->
   <section id="about">
     <div class="hero-section">
       <div class="hero-inner">
-        <!-- LEFT: photo + icons -->
         <div class="hero-left">
           <img src="Profile_pic.jpg" alt="Pragati Dahal" class="hero-photo" />
           <div class="hero-socials">
@@ -225,20 +222,13 @@
             </a>
           </div>
         </div>
-
-        <!-- RIGHT: name + bio + CV -->
         <div class="hero-right">
           <h1>Pragati <em>Dahal</em></h1>
           <div class="hero-role">PhD Student &middot; Agricultural &amp; Applied Economics &middot; Virginia Tech</div>
-          <p class="hero-bio">
-            I am a first-year PhD student in Agricultural and Applied Economics at <a href="https://www.aaec.vt.edu/" target="_blank">Virginia Tech</a>, working as a Graduate Research Assistant with <a href="https://www.lewangecon.com/" target="_blank">Dr. Le Wang</a>.
-          </p>
-          <p class="hero-bio">
-            I believe in knowledge sharing, and I try to contribute by making my <a href="https://github.com/pdahal23" target="_blank">code</a>, tutorials, and lecture notes publicly available.
-          </p>
+          <p class="hero-bio">I am a first-year PhD student in Agricultural and Applied Economics at <a href="https://www.aaec.vt.edu/" target="_blank">Virginia Tech</a>, working as a Graduate Research Assistant with <a href="https://www.lewangecon.com/" target="_blank">Dr. Le Wang</a>.</p>
+          <p class="hero-bio">I believe in knowledge sharing, and I try to contribute by making my <a href="https://github.com/pdahal23" target="_blank">code</a>, tutorials, and lecture notes publicly available.</p>
           <a href="CV.pdf" target="_blank" class="hero-cv">Download CV</a>
         </div>
-
       </div>
     </div>
   </section>
@@ -251,6 +241,7 @@
         <span class="section-num">01</span>
         <h2>Posts</h2>
       </div>
+      <div class="section-body">
       <div class="posts-grid">
         <a href="https://github.com/pdahal23" target="_blank" class="post-card">
           <div class="post-card-thumb"><span>Coming Soon</span></div>
@@ -269,6 +260,7 @@
           </div>
         </a>
       </div>
+      </div><!-- section-body -->
     </div>
 
     <!-- RESEARCH -->
@@ -277,6 +269,7 @@
         <span class="section-num">02</span>
         <h2>Research</h2>
       </div>
+      <div class="section-body">
       <p style="font-size:1.05rem;color:var(--ink-soft);margin-bottom:28px;">My research interests lie at the intersection of applied econometrics, causal inference, health economics, and labor economics.</p>
       <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--ink);letter-spacing:-0.01em;margin-bottom:0;padding-bottom:10px;border-bottom:1px solid var(--rule);">Work in Progress</h3>
       <div class="research-list">
@@ -318,6 +311,7 @@
         </div>
 
       </div>
+      </div><!-- section-body -->
     </div>
 
     <!-- EXPERIENCE -->
@@ -326,30 +320,36 @@
         <span class="section-num">03</span>
         <h2>Experience</h2>
       </div>
+      <div class="section-body">
       <div class="experience-list">
 
         <div class="exp-item">
+          <div class="exp-left">2025&ndash;Present</div>
           <div>
             <div class="exp-title">Graduate Research Assistant</div>
-            <div class="exp-meta">2025&ndash;Present &middot; Department of Agricultural and Applied Economics, Virginia Tech</div>
+            <div class="exp-meta">Dept. of Agricultural and Applied Economics, Virginia Tech</div>
           </div>
         </div>
 
         <div class="exp-item">
+          <div class="exp-left">2026</div>
           <div>
             <div class="exp-title">Graduate Lead, Data Science for the Public Good (DSPG)</div>
-            <div class="exp-meta">2026 &middot; Kohl Center, Department of Agricultural and Applied Economics, Virginia Tech</div>
+            <div class="exp-meta">Kohl Center, Dept. of Agricultural and Applied Economics, Virginia Tech</div>
           </div>
         </div>
 
         <div class="exp-item">
+          <div class="exp-left">2023&ndash;2025</div>
           <div>
             <div class="exp-title">Graduate Research Assistant</div>
-            <div class="exp-meta">2023&ndash;2025 &middot; Department of Agricultural Economics and Rural Sociology, University of Idaho</div>
+            <div class="exp-meta">Dept. of Agricultural Economics and Rural Sociology, University of Idaho</div>
           </div>
         </div>
 
       </div>
+      </div><!-- section-body -->
+    </div>
 
     <!-- AWARDS -->
     <div class="section fade-in" id="awards">
@@ -357,6 +357,7 @@
         <span class="section-num">04</span>
         <h2>Awards &amp; Honors</h2>
       </div>
+      <div class="section-body">
       <div class="awards-list">
         <div class="award-item">
           <span class="award-year">2024/25</span>
@@ -374,6 +375,7 @@
           <span class="award-org">Private and Boarding School Organization Nepal</span>
         </div>
       </div>
+      </div><!-- section-body -->
     </div>
 
     <!-- CONFERENCES -->
@@ -382,6 +384,7 @@
         <span class="section-num">05</span>
         <h2>Presentations</h2>
       </div>
+      <div class="section-body">
       <div class="awards-list">
 
         <div class="award-item">
@@ -397,6 +400,7 @@
         </div>
 
       </div>
+      </div><!-- section-body -->
     </div>
 
     <!-- CONTACT -->
@@ -405,6 +409,7 @@
         <span class="section-num">05</span>
         <h2>Contact</h2>
       </div>
+      <div class="section-body">
       <p class="contact-intro">I welcome inquiries about research collaboration and academic opportunities.</p>
       <div class="contact-list">
         <div class="contact-item"><span class="contact-icon">✉</span><a id="email-display" href="#">&nbsp;</a></div>
@@ -415,6 +420,7 @@
     </div>
 
   </div>
+
 
 
   <footer>

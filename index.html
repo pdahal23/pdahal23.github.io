@@ -90,9 +90,7 @@
     /* ── MAIN CONTENT ── */
     .main { max-width: 960px; margin: 0 auto; padding: 0 48px 80px; }
 
-    /* ── SECTION ── */
-
-    /* ── SECTION LAYOUT (Matteo: title left, content right) ── */
+    /* ── SECTION LAYOUT ── */
     .section { margin-top: 64px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
     .section-header { margin-bottom: 0; position: sticky; top: 80px; align-self: start; }
     .section-header h2 { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--ink); letter-spacing: -0.02em; }
@@ -100,7 +98,7 @@
     .section-num { display: none; }
     .section-body { min-width: 0; }
 
-    /* ── POSTS (Matteo style: vertical list, title+desc+date, no cards) ── */
+    /* ── POSTS ── */
     .posts-grid { display: flex; flex-direction: column; gap: 0; }
     .post-card { display: flex; align-items: flex-start; gap: 24px; text-decoration: none; color: inherit; padding: 24px 0; border-bottom: 1px solid var(--rule); transition: opacity var(--transition); }
     .post-card:first-child { border-top: 1px solid var(--rule); }
@@ -112,7 +110,7 @@
     .post-card-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); line-height: 1.35; margin-bottom: 6px; }
     .post-card-desc { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.65; }
 
-    /* ── RESEARCH (Matteo style) ── */
+    /* ── RESEARCH ── */
     .research-list { border-top: 1px solid var(--rule); }
     .research-item { border-bottom: 1px solid var(--rule); padding: 24px 0; }
     .research-item-inner { display: block; }
@@ -126,8 +124,8 @@
     .research-toggle-icon { display: inline-block; transition: transform 0.3s ease; }
     .research-toggle.open .research-toggle-icon { transform: rotate(180deg); }
     .research-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
-    .research-link { font-size: 0.78rem; color: var(--maroon); text-decoration: none; }
-    .research-link:hover { text-decoration: underline; }
+    .research-link { font-size: 0.78rem; color: var(--maroon); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color var(--transition); }
+    .research-link:hover { border-bottom-color: var(--maroon); }
 
     /* ── EXPERIENCE ── */
     .experience-list { border-top: 1px solid var(--rule); }
@@ -167,7 +165,7 @@
     #back-to-top.visible { opacity: 1; transform: translateY(0); }
     #back-to-top:hover { background: var(--maroon-light); transform: translateY(-2px); }
 
-    /* ── FADE IN ANIMATION ── */
+    /* ── FADE IN ── */
     .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
 
@@ -204,7 +202,7 @@
     </div>
   </nav>
 
-  <!-- HERO (full width, unchanged) -->
+  <!-- HERO -->
   <section id="about">
     <div class="hero-section">
       <div class="hero-inner">
@@ -226,7 +224,7 @@
           <h1>Pragati <em>Dahal</em></h1>
           <div class="hero-role">PhD Student &middot; Agricultural &amp; Applied Economics &middot; Virginia Tech</div>
           <p class="hero-bio">I am a first-year PhD student in Agricultural and Applied Economics at <a href="https://www.aaec.vt.edu/" target="_blank">Virginia Tech</a>, working as a Graduate Research Assistant with <a href="https://www.lewangecon.com/" target="_blank">Dr. Le Wang</a>.</p>
-          <p class="hero-bio">I believe in knowledge sharing, and I try to contribute by making my <a href="https://github.com/pdahal23" target="_blank">code</a>, tutorials, and lecture notes publicly available.</p>
+          <p class="hero-bio">I am building a space where I can share what I learn and work on throughout my PhD journey, including <a href="https://github.com/pdahal23" target="_blank">codes</a>, tutorials, and lecture notes.</p>
           <a href="CV.pdf" target="_blank" class="hero-cv">Download CV</a>
         </div>
       </div>
@@ -260,7 +258,7 @@
           </div>
         </a>
       </div>
-      </div><!-- section-body -->
+      </div>
     </div>
 
     <!-- RESEARCH -->
@@ -282,7 +280,11 @@
               <div class="research-abstract">We examine the impact of broadband expansion on mental health in U.S. counties. Improved internet access may benefit mental health through telehealth and health information, yet it may also harm it through social displacement and screen-time effects, leaving the net effect theoretically ambiguous. We build a county-year panel (2008&ndash;2025) combining FCC broadband data with County Health Rankings, CDC PLACES, and ACS data. Exploiting staggered adoption of higher-speed thresholds across counties in a difference-in-differences framework, we estimate causal effects on outcomes such as frequent mental distress and poor mental health days. We further use causal forest methods to characterize treatment effect heterogeneity and identify who experiences the largest impacts.</div>
               <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
                 <span class="research-toggle-icon">&#9660;</span> Abstract
-              </button></div>
+              </button>
+              <div class="research-links">
+                <a href="https://github.com/pdahal23/Broadband-and-MentalHealth" target="_blank" class="research-link">Code</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -294,7 +296,8 @@
               <div class="research-abstract">Despite substantial gains in education and workforce participation, women in the United States remain persistently underrepresented in political office. This study examines whether Campaign Funds for Childcare (CFCC) policies influence the share of women running for elected positions, drawing on three complementary datasets that capture variation across federal, state, and local elections. CFCC policies permit candidates to use campaign resources for childcare, easing potential burdens that disproportionately fall on women and potentially lowering barriers to entry. Using Two-Way Fixed Effects and staggered Difference-in-Differences estimators, we find overall evidence of policy effects to be weak and statistically insignificant among federal and state elections. However, in local elections, the earliest cohort of treated jurisdictions exhibits a notable increase in female participation approximately four years after policy implementation, indicating that heterogeneous or delayed responses may exist even if broad, systematic effects remain limited.</div>
               <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
                 <span class="research-toggle-icon">&#9660;</span> Abstract
-              </button></div>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -306,12 +309,13 @@
               <div class="research-abstract">Potato Virus Y (PVY) is one of the most economically significant pathogens in seed potato systems, causing substantial yield losses and seed certification downgrades. This paper evaluates the economic efficiency of six PVY management strategies involving mineral oils and insecticides, using multi-year field trial data from Idaho. A partial budgeting approach is applied to assess trade-offs between PVY suppression and net revenue. Results show that while certain treatment combinations effectively reduce virus incidence, the at-plant insecticide plus weekly oil treatment generates the highest net revenue across potato size classes. Intensive insecticide-oil combinations prove cost-ineffective under commercial production conditions, underscoring the need for cost-conscious management practices.</div>
               <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
                 <span class="research-toggle-icon">&#9660;</span> Abstract
-              </button></div>
+              </button>
+            </div>
           </div>
         </div>
 
       </div>
-      </div><!-- section-body -->
+      </div>
     </div>
 
     <!-- EXPERIENCE -->
@@ -322,7 +326,6 @@
       </div>
       <div class="section-body">
       <div class="experience-list">
-
         <div class="exp-item">
           <div class="exp-left">2025&ndash;Present</div>
           <div>
@@ -330,7 +333,6 @@
             <div class="exp-meta">Dept. of Agricultural and Applied Economics, Virginia Tech</div>
           </div>
         </div>
-
         <div class="exp-item">
           <div class="exp-left">2026</div>
           <div>
@@ -338,7 +340,6 @@
             <div class="exp-meta">Kohl Center, Dept. of Agricultural and Applied Economics, Virginia Tech</div>
           </div>
         </div>
-
         <div class="exp-item">
           <div class="exp-left">2023&ndash;2025</div>
           <div>
@@ -346,9 +347,8 @@
             <div class="exp-meta">Dept. of Agricultural Economics and Rural Sociology, University of Idaho</div>
           </div>
         </div>
-
       </div>
-      </div><!-- section-body -->
+      </div>
     </div>
 
     <!-- AWARDS -->
@@ -375,7 +375,7 @@
           <span class="award-org">Private and Boarding School Organization Nepal</span>
         </div>
       </div>
-      </div><!-- section-body -->
+      </div>
     </div>
 
     <!-- CONFERENCES -->
@@ -386,21 +386,18 @@
       </div>
       <div class="section-body">
       <div class="awards-list">
-
         <div class="award-item">
           <span class="award-year">2024</span>
           <span class="award-name">Pragati Dahal, Alex Maas. &ldquo;Running up that Hill: Campaign Funds for Childcare and Women&rsquo;s Representation at the Local, State and Federal Level.&rdquo; <em>Western Agricultural Economics Association (WAEA)</em>, June 23&ndash;25, 2024.</span>
           <span class="award-org">Conference Presentation</span>
         </div>
-
         <div class="award-item">
           <span class="award-year">2025</span>
           <span class="award-name">Pragati Dahal, Christopher McIntosh. &ldquo;Economic Efficiency of Mineral Oil-Insecticide Combinations in the Management of PVY.&rdquo; <em>Potato Expo</em>, Orlando, FL, January 9&ndash;10, 2025.</span>
           <span class="award-org"><a href="https://www.dropbox.com/scl/fi/4d6y7fh8yd651lfi4xjue/Economic-Efficiency-of-Mineral-Oil-Insecticide-Combinations-in-the-Management-of-PVY.pptx?rlkey=80rcpm230rp5nidgdflrh9gm2&st=w8bmprfy&dl=0" target="_blank" style="color:var(--maroon);text-decoration:none;">Poster Presentation</a></span>
         </div>
-
       </div>
-      </div><!-- section-body -->
+      </div>
     </div>
 
     <!-- CONTACT -->
@@ -414,14 +411,12 @@
       <div class="contact-list">
         <div class="contact-item"><span class="contact-icon">✉</span><a id="email-display" href="#">&nbsp;</a></div>
         <div class="contact-item"><span class="contact-icon">🌐</span><a href="https://pdahal23.github.io" target="_blank">pdahal23.github.io</a></div>
-        <div class="contact-item"><span class="contact-icon">📞</span><span>+1 (208) 997-9552</span></div>
         <div class="contact-item"><span class="contact-icon">📍</span><span>Dept. of Agricultural &amp; Applied Economics, Virginia Tech, Blacksburg, VA</span></div>
+      </div>
       </div>
     </div>
 
   </div>
-
-
 
   <footer>
     <p>&copy; 2026 Pragati Dahal &middot; Virginia Tech</p>
@@ -430,12 +425,10 @@
   <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8679;</button>
 
   <script>
-    // Email (JS-assembled to avoid Cloudflare obfuscation)
     var u='pdahal', d='vt.edu', e=u+'@'+d;
     document.getElementById('email-display').textContent=e;
     document.getElementById('email-display').href='mailto:'+e;
 
-    // Collapsible abstracts
     function toggleAbstract(titleEl) {
       var item = titleEl.closest('.research-item');
       var abstract = item.querySelector('.research-abstract');
@@ -444,7 +437,6 @@
       toggle.classList.toggle('open');
     }
 
-    // Active nav on scroll
     var sections = document.querySelectorAll('[id]');
     var navLinks = document.querySelectorAll('.nav-links a');
     function updateNav() {
@@ -455,11 +447,9 @@
       });
     }
 
-    // Back to top visibility
     var btt = document.getElementById('back-to-top');
     function updateBTT() { btt.classList.toggle('visible', window.scrollY > 400); }
 
-    // Fade in on scroll
     var fadeEls = document.querySelectorAll('.fade-in');
     function checkFade() {
       fadeEls.forEach(function(el) {

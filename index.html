@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pragati Dahal — Virginia Tech</title>
   <meta name="description" content="PhD Student in Agricultural and Applied Economics at Virginia Tech. Research in applied econometrics, health economics, and causal inference." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --cream: #faf8f4;
@@ -13,173 +13,322 @@
       --ink: #1a1612;
       --ink-soft: #3d3530;
       --ink-muted: #6b6058;
-      --maroon: #7a1933;
+      --maroon: #861F41;
       --maroon-light: #a02244;
-      --maroon-pale: rgba(122,25,51,0.07);
+      --maroon-pale: rgba(134,31,65,0.08);
       --gold: #c9a84c;
-      --gold-pale: rgba(201,168,76,0.12);
+      --gold-pale: rgba(201,168,76,0.13);
       --rule: #e2ddd7;
-      --dark: #1e1a16;
-      --dark-2: #2a2520;
-      --muted: #8a8178;
-      --mono: 'JetBrains Mono', monospace;
+      --dark-hero: #5a1029;
+      --dark-nav: #6b1231;
       --serif: 'Cormorant Garamond', Georgia, serif;
+      --serif-alt: 'Cormorant', Georgia, serif;
       --sans: 'Inter', sans-serif;
       --shadow: 0 2px 16px rgba(26,22,18,0.08);
-      --shadow-lg: 0 8px 32px rgba(26,22,18,0.12);
-      --radius: 4px;
+      --shadow-lg: 0 8px 40px rgba(26,22,18,0.18);
       --transition: 0.22s ease;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; font-size: 17px; }
-    body { background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.75; -webkit-font-smoothing: antialiased; letter-spacing: -0.01em; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.75; -webkit-font-smoothing: antialiased; }
 
-    /* ── SCROLLBAR ── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--cream); }
-    ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--maroon); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--maroon); }
+    ::-webkit-scrollbar-thumb { background: var(--maroon); border-radius: 3px; }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: sticky; top: 0; z-index: 200;
-      background: rgba(250,248,244,0.97);
-      backdrop-filter: blur(12px);
-      display: flex; align-items: center; justify-content: center;
-      padding: 0; height: 58px;
-      border-bottom: 1px solid var(--rule);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      background: var(--dark-nav);
+      display: flex; align-items: center;
+      height: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .nav-inner { max-width: 960px; margin: 0 auto; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    .nav-name { font-family: var(--sans); font-size: 1.1rem; font-weight: 300; color: var(--ink); text-decoration: none; letter-spacing: 0.18em; text-transform: uppercase; transition: opacity var(--transition); }
-    .nav-name:hover { opacity: 0.8; }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.01em; text-transform: none; color: var(--ink-muted); text-decoration: none; transition: color var(--transition); padding-bottom: 2px; border-bottom: 1px solid transparent; font-weight: 400; }
-    .nav-links a:hover, .nav-links a.active { color: var(--maroon); border-bottom-color: var(--maroon); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 56px; display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-name { font-family: var(--sans); font-size: 1.05rem; font-weight: 400; color: #fff; text-decoration: none; }
+    .nav-name span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; transition: color var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
 
-    /* ── HERO ── */
-    .hero-section { background: var(--cream); padding: 60px 0 72px; }
-    .hero-inner { max-width: 960px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 240px 1fr; gap: 56px; align-items: start; }
+    /* HERO */
+    #about {
+      background: var(--dark-hero);
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      position: relative; overflow: hidden;
+    }
+    #about::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 65% 55% at 72% 55%, rgba(20,5,10,0.35) 0%, transparent 68%),
+                  radial-gradient(ellipse 40% 35% at 15% 80%, rgba(201,168,76,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content {
+      max-width: 1200px; margin: 0 auto; padding: 0 56px;
+      display: grid; grid-template-columns: 1fr 400px;
+      gap: 60px; align-items: center;
+      flex: 1; padding-top: 64px; min-height: 100vh;
+    }
+    .hero-left { padding-top: 20px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 100px; padding: 7px 18px;
+      font-size: 0.78rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 7vw, 6.2rem);
+      font-weight: 300;
+      line-height: 0.9;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero-name .last { color: var(--gold); display: block; }
+    .hero-tagline { font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 4px; font-weight: 300; }
+    .hero-tagline strong { color: rgba(255,255,255,0.82); font-weight: 500; }
+    .hero-location { font-size: 0.82rem; color: rgba(255,255,255,0.38); margin-bottom: 32px; }
+    .hero-bio { font-size: 0.97rem; color: rgba(255,255,255,0.6); line-height: 1.85; margin-bottom: 40px; max-width: 500px; }
+    .hero-bio a { color: var(--gold); text-decoration: none; }
+    .hero-bio a:hover { text-decoration: underline; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: var(--dark-hero);
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.03em;
+      text-decoration: none; padding: 12px 26px; border-radius: 100px;
+      transition: all var(--transition);
+    }
+    .btn-primary:hover { background: #d4b35a; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.28); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,255,255,0.8);
+      font-size: 0.82rem; font-weight: 400; letter-spacing: 0.02em;
+      text-decoration: none; padding: 12px 26px; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.2); transition: all var(--transition);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.38); transform: translateY(-2px); }
 
-    /* Left column */
-    .hero-left { display: flex; flex-direction: column; align-items: center; margin-left: -192px; }
-    .hero-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid var(--rule); box-shadow: var(--shadow-lg); margin-bottom: 20px; transition: transform 0.4s ease; }
-    .hero-photo:hover { transform: scale(1.02); }
-    .hero-socials { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-    .social-icon { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 6px; background: var(--maroon); color: #fff; text-decoration: none; transition: background var(--transition), transform var(--transition); }
-    .social-icon:hover { background: var(--maroon-light); transform: translateY(-2px); }
+    .hero-right { display: flex; align-items: center; justify-content: center; padding-top: 80px; }
+    .hero-photo-plain { width: 340px; height: 420px; border-radius: 12px; object-fit: cover; object-position: center top; border: 3px solid rgba(255,255,255,0.2); box-shadow: 0 8px 40px rgba(0,0,0,0.3); transition: transform 0.4s ease; }
+    .hero-photo-plain:hover { transform: scale(1.02); }
+    .hero-photo-wrap { position: relative; width: 280px; height: 280px; }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; inset: -3px; border-radius: 50%;
+      background: conic-gradient(var(--gold) 0deg, rgba(255,255,255,0.3) 130deg, transparent 190deg, var(--gold) 360deg);
+      animation: spin 14s linear infinite; z-index: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-photo {
+      position: relative; z-index: 1;
+      width: 274px; height: 274px; border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 3px solid var(--dark-hero);
+    }
+    .hero-stats {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 16px; padding: 20px 22px;
+      display: flex; flex-direction: column; gap: 14px;
+      width: 185px;
+      margin-top: -56px; margin-right: -48px;
+      backdrop-filter: blur(20px);
+    }
+    .stat-row { text-align: right; }
+    .stat-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--gold); line-height: 1; }
+    .stat-num sup { font-size: 1rem; }
+    .stat-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
 
-    /* Right column */
-    .hero-right { padding-top: 8px; }
-    .hero-right h1 { font-family: var(--serif); font-size: 2.6rem; font-weight: 500; line-height: 1.1; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.02em; }
-    .hero-right h1 em { font-style: italic; color: var(--maroon); }
-    .hero-role { font-size: 0.82rem; color: var(--ink-muted); margin-bottom: 24px; }
-    .hero-bio { font-size: 1rem; color: var(--ink-soft); line-height: 1.85; margin-bottom: 20px; font-family: var(--sans); }
-    .hero-bio a { color: var(--maroon); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color var(--transition); }
-    .hero-bio a:hover { border-bottom-color: var(--maroon); }
-    .hero-cv { display: inline-block; font-family: var(--sans); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--maroon); padding: 10px 24px; border-radius: var(--radius); text-decoration: none; transition: background var(--transition), transform var(--transition); }
-    .hero-cv:hover { background: var(--maroon-light); transform: translateY(-1px); }
+    /* SECTIONS */
+    .page-section { padding: 96px 0 76px; }
+    .page-section.light { background: var(--cream); }
+    .page-section.dark { background: var(--dark-hero); }
+    .page-section.mid { background: var(--cream-dark); }
+    .section-inner { max-width: 1000px; margin: 0 auto; padding: 0 56px; }
 
-    /* ── STATS BAR ── */
-    .stats-bar { background: var(--dark-2); border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid var(--rule); }
-    .stats-inner { max-width: 1200px; margin: 0 auto; padding: 0 80px; display: flex; gap: 0; }
-    .stat-item { flex: 1; padding: 20px 0; text-align: center; border-right: 1px solid var(--rule); }
-    .stat-item:last-child { border-right: none; } 
-    .stat-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--maroon); line-height: 1; margin-bottom: 4px; }
-    .stat-label { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+    .section-eyebrow {
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 14px; display: block;
+    }
+    .section-eyebrow.on-light { color: var(--maroon); }
+    .section-title {
+      font-family: var(--serif-alt); font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 14px;
+    }
+    .on-dark { color: #fff; }
+    .on-light { color: var(--ink); }
+    .section-sub { font-size: 0.93rem; line-height: 1.75; max-width: 580px; margin-bottom: 48px; }
+    .section-sub.on-dark { color: rgba(255,255,255,0.52); }
+    .section-sub.on-light { color: var(--ink-muted); }
+    .centered { text-align: center; }
+    .centered .section-sub { margin-left: auto; margin-right: auto; }
 
-    /* ── MAIN CONTENT ── */
-    .main { max-width: 960px; margin: 0 auto; padding: 0 48px 80px; }
-
-    /* ── SECTION LAYOUT ── */
-    .section { margin-top: 64px; display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
-    .section-header { margin-bottom: 0; position: sticky; top: 80px; align-self: start; }
-    .section-header h2 { font-family: var(--serif); font-size: 2rem; font-weight: 400; color: var(--ink); letter-spacing: -0.02em; }
-    .section-header::after { display: none; }
-    .section-num { display: none; }
-    .section-body { min-width: 0; }
-
-    /* ── POSTS ── */
-    .posts-grid { display: flex; flex-direction: column; gap: 0; }
-    .post-card { display: flex; align-items: flex-start; gap: 24px; text-decoration: none; color: inherit; padding: 24px 0; border-bottom: 1px solid var(--rule); transition: opacity var(--transition); }
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 320px; gap: 52px; align-items: start; }
+    .about-body p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.85; margin-bottom: 16px; }
+    .about-body p strong { color: var(--ink); }
+    .about-body p a { color: var(--maroon); text-decoration: none; }
+    .about-body p a:hover { text-decoration: underline; }
+    .about-posts-label { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin: 30px 0 0; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+    .posts-list { display: flex; flex-direction: column; }
+    .post-card { display: flex; align-items: flex-start; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; transition: opacity var(--transition); }
     .post-card:first-child { border-top: 1px solid var(--rule); }
-    .post-card:hover { opacity: 0.75; }
-    .post-card-thumb { width: 80px; height: 80px; flex-shrink: 0; background: var(--cream-dark); border-radius: var(--radius); overflow: hidden; display: flex; align-items: center; justify-content: center; order: 2; }
-    .post-card-thumb span { font-size: 0.6rem; color: var(--ink-muted); text-align: center; padding: 4px; }
-    .post-card-body { flex: 1; order: 1; }
-    .post-card-date { font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 6px; }
-    .post-card-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); line-height: 1.35; margin-bottom: 6px; }
-    .post-card-desc { font-size: 0.88rem; color: var(--ink-muted); line-height: 1.65; }
+    .post-card:hover { opacity: 0.72; }
+    .post-thumb { width: 68px; height: 68px; flex-shrink: 0; background: var(--cream-dark); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: var(--ink-muted); text-align: center; border: 1px solid var(--rule); order: 2; }
+    .post-body { flex: 1; order: 1; }
+    .post-year { font-size: 0.73rem; color: var(--ink-muted); margin-bottom: 3px; }
+    .post-title { font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink); margin-bottom: 3px; line-height: 1.35; }
+    .post-desc { font-size: 0.83rem; color: var(--ink-muted); line-height: 1.6; }
 
-    /* ── RESEARCH ── */
-    .research-list { border-top: 1px solid var(--rule); }
-    .research-item { border-bottom: 1px solid var(--rule); padding: 24px 0; }
-    .research-item-inner { display: block; }
-    .research-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.4; cursor: pointer; transition: color var(--transition); }
-    .research-title:hover { color: var(--maroon); }
-    .research-status { font-size: 0.78rem; color: var(--ink-muted); margin-bottom: 8px; }
-    .research-abstract { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.75; margin-top: 10px; overflow: hidden; max-height: 0; transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0; }
-    .research-abstract.open { max-height: 400px; opacity: 1; }
-    .research-toggle { font-size: 0.78rem; color: var(--maroon); background: none; border: none; cursor: pointer; padding: 8px 0 0; transition: opacity var(--transition); display: flex; align-items: center; gap: 4px; }
-    .research-toggle:hover { opacity: 0.7; }
-    .research-toggle-icon { display: inline-block; transition: transform 0.3s ease; }
-    .research-toggle.open .research-toggle-icon { transform: rotate(180deg); }
-    .research-links { display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap; }
+    .skills-panel { background: #fff; border: 1px solid var(--rule); border-radius: 16px; padding: 26px; }
+    .skills-heading { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--maroon); margin-bottom: 20px; display: block; }
+    .skill-group { margin-bottom: 18px; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-group-label { font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; display: block; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tag { font-size: 0.73rem; color: var(--ink-soft); border: 1px solid var(--rule); border-radius: 100px; padding: 4px 11px; background: var(--cream); transition: all var(--transition); }
+    .skill-tag:hover { border-color: var(--maroon); color: var(--maroon); }
+
+    /* RESEARCH */
+    .research-filters { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .filter-btn { font-size: 0.78rem; padding: 7px 18px; border-radius: 100px; border: 1px solid var(--rule); background: transparent; color: var(--ink-muted); cursor: pointer; transition: all var(--transition); font-family: var(--sans); }
+    .filter-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .filter-btn:hover:not(.active) { border-color: var(--ink-muted); color: var(--ink); }
+
+    .research-cards { display: flex; flex-direction: column; gap: 12px; }
+    .research-card { background: #fff; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; transition: box-shadow var(--transition); }
+    .research-card:hover { box-shadow: 0 4px 24px rgba(26,22,18,0.08); }
+    .research-card-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 24px; cursor: pointer; }
+    .research-card-left { flex: 1; }
+    .research-badges { display: flex; gap: 7px; margin-bottom: 8px; flex-wrap: wrap; }
+    .badge { font-size: 0.63rem; letter-spacing: 0.09em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; font-weight: 500; }
+    .badge-wip { background: var(--gold-pale); color: #7a5f00; border: 1px solid rgba(201,168,76,0.25); }
+    .badge-rr { background: var(--maroon-pale); color: var(--maroon); border: 1px solid rgba(134,31,65,0.2); }
+    .badge-ms { background: rgba(26,22,18,0.05); color: var(--ink-muted); border: 1px solid var(--rule); }
+    .research-card-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 4px; }
+    .research-card-venue { font-size: 0.78rem; color: var(--ink-muted); }
+    .expand-btn { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--rule); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: 16px; font-size: 1.1rem; color: var(--ink-muted); line-height: 1; transition: all var(--transition); }
+    .expand-btn.open { background: var(--maroon); color: #fff; border-color: var(--maroon); transform: rotate(45deg); }
+    .expand-btn:hover:not(.open) { background: var(--maroon); color: #fff; border-color: var(--maroon); }
+    .research-card-body { max-height: 0; overflow: hidden; transition: max-height 0.42s ease, opacity 0.3s ease; opacity: 0; }
+    .research-card-body.open { max-height: 500px; opacity: 1; }
+    .research-card-body-inner { padding: 18px 24px 22px; border-top: 1px solid var(--rule); }
+    .research-abstract-text { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 12px; }
+    .research-links { display: flex; gap: 14px; }
     .research-link { font-size: 0.78rem; color: var(--maroon); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color var(--transition); }
     .research-link:hover { border-bottom-color: var(--maroon); }
 
-    /* ── EXPERIENCE ── */
-    .experience-list { border-top: 1px solid var(--rule); }
-    .exp-item { display: grid; grid-template-columns: 140px 1fr; gap: 32px; border-bottom: 1px solid var(--rule); padding: 20px 0; align-items: start; }
-    .exp-left { font-size: 0.82rem; color: var(--ink-muted); line-height: 1.6; padding-top: 3px; }
-    .exp-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
-    .exp-meta { font-size: 0.82rem; color: var(--ink-muted); margin-bottom: 8px; }
-    .exp-desc { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.7; }
-    .exp-desc a { color: var(--maroon); text-decoration: none; }
-    .exp-desc a:hover { text-decoration: underline; }
+    /* CV */
+    .cv-header-row { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 48px; }
+    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; }
+    .cv-col-label { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: block; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .timeline { display: flex; flex-direction: column; }
+    .timeline-item { display: flex; gap: 16px; padding-bottom: 28px; position: relative; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 6px; position: relative; z-index: 1; }
+    .timeline-item::before { content: ''; position: absolute; left: 4px; top: 13px; bottom: 0; width: 1px; background: rgba(255,255,255,0.2); }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-body { flex: 1; }
+    .timeline-date { font-size: 0.76rem; color: rgba(255,255,255,0.38); margin-bottom: 3px; }
+    .timeline-title { font-family: var(--serif); font-size: 1.02rem; font-weight: 500; color: #fff; margin-bottom: 2px; line-height: 1.3; }
+    .timeline-meta { font-size: 0.8rem; color: rgba(255,255,255,0.48); line-height: 1.5; }
 
-    /* ── AWARDS / PRESENTATIONS ── */
-    .awards-list { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
-    .award-item { display: grid; grid-template-columns: 80px 1fr 160px; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--rule); align-items: start; }
-    .award-year { font-size: 0.82rem; color: var(--ink-muted); padding-top: 2px; }
-    .award-name { font-size: 0.95rem; color: var(--ink); line-height: 1.65; }
-    .award-org { font-size: 0.82rem; color: var(--ink-muted); text-align: right; padding-top: 2px; }
-    .award-org a { color: var(--maroon); text-decoration: none; }
-    .award-org a:hover { text-decoration: underline; }
+    /* AWARDS */
+    .awards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .award-card { background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 22px 18px; transition: box-shadow var(--transition), transform var(--transition); }
+    .award-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .award-card.featured { background: var(--ink); border-color: var(--ink); }
+    .award-icon { font-size: 1.4rem; margin-bottom: 10px; display: block; }
+    .award-year-tag { font-size: 0.66rem; letter-spacing: 0.08em; color: var(--gold); display: block; margin-bottom: 6px; font-weight: 500; }
+    .award-name { font-family: var(--serif); font-size: 0.97rem; font-weight: 500; color: var(--ink); line-height: 1.35; margin-bottom: 4px; }
+    .award-name a { color: inherit; text-decoration: none; }
+    .award-name a:hover { color: var(--maroon); }
+    .award-card.featured .award-name { color: #fff; }
+    .award-meta { font-size: 0.76rem; color: var(--ink-muted); line-height: 1.5; }
+    .award-card.featured .award-meta { color: rgba(255,255,255,0.48); }
 
-    /* ── CONTACT ── */
-    .contact-intro { font-size: 1rem; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.7; }
-    .contact-list { display: flex; flex-direction: column; gap: 16px; }
-    .contact-item { display: flex; align-items: center; gap: 14px; font-size: 0.95rem; color: var(--ink); }
-    .contact-icon { font-size: 1rem; width: 22px; text-align: center; flex-shrink: 0; }
-    .contact-item a { color: var(--maroon); text-decoration: none; transition: opacity var(--transition); }
-    .contact-item a:hover { opacity: 0.75; text-decoration: underline; }
+    /* PRESENTATIONS */
+    .pres-list { display: flex; flex-direction: column; gap: 12px; margin-top: 48px; }
+    .pres-card { background: #fff; border: 1px solid var(--rule); border-radius: 14px; padding: 20px 24px; display: grid; grid-template-columns: 56px 1fr auto; gap: 18px; align-items: start; transition: box-shadow var(--transition); }
+    .pres-card:hover { box-shadow: var(--shadow); }
+    .pres-year { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--maroon); line-height: 1; padding-top: 2px; }
+    .pres-title { font-family: var(--serif); font-size: 0.97rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; line-height: 1.38; }
+    .pres-venue { font-size: 0.8rem; color: var(--ink-muted); line-height: 1.5; }
+    .pres-type { font-size: 0.65rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--maroon); background: var(--maroon-pale); border-radius: 100px; padding: 4px 12px; white-space: nowrap; align-self: start; margin-top: 3px; text-decoration: none; }
 
-    /* ── FOOTER ── */
-    footer { background: transparent; border-top: 1px solid var(--rule); padding: 24px 48px; display: flex; align-items: center; justify-content: center; margin-top: 80px; }
-    footer p { font-family: var(--sans); font-size: 0.75rem; color: var(--ink-muted); }
-    footer a { color: var(--ink-muted); text-decoration: none; }
-    footer a:hover { color: var(--maroon); }
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .contact-heading { font-family: var(--serif-alt); font-size: 3rem; font-weight: 400; color: #fff; margin-bottom: 16px; line-height: 1.08; }
+    .contact-body { font-size: 0.93rem; color: rgba(255,255,255,0.52); line-height: 1.8; margin-bottom: 34px; }
+    .contact-details { display: flex; flex-direction: column; gap: 16px; }
+    .contact-detail { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-icon-wrap { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.22); display: flex; align-items: center; justify-content: center; font-size: 0.95rem; flex-shrink: 0; }
+    .contact-detail-text { display: flex; flex-direction: column; }
+    .contact-detail-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.32); margin-bottom: 2px; }
+    .contact-detail-value { font-size: 0.88rem; color: rgba(255,255,255,0.72); line-height: 1.5; }
+    .contact-detail-value a { color: inherit; text-decoration: none; }
+    .contact-detail-value a:hover { color: var(--gold); }
+    .find-online-label { font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; display: block; }
+    .social-links { display: flex; flex-direction: column; gap: 8px; }
+    .social-link { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; padding: 14px 18px; text-decoration: none; color: #fff; transition: all var(--transition); }
+    .social-link:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.35); transform: translateX(4px); }
+    .social-link-left { display: flex; align-items: center; gap: 13px; }
+    .social-link-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .social-link-name { font-size: 0.88rem; font-weight: 500; }
+    .social-link-sub { font-size: 0.73rem; color: rgba(255,255,255,0.42); margin-top: 1px; }
+    .social-arrow { color: rgba(255,255,255,0.3); font-size: 1rem; transition: color var(--transition); }
+    .social-link:hover .social-arrow { color: var(--gold); }
 
-    /* ── BACK TO TOP ── */
-    #back-to-top { position: fixed; bottom: 32px; right: 32px; width: 40px; height: 40px; background: var(--maroon); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px); transition: all var(--transition); z-index: 100; box-shadow: var(--shadow); }
+    /* CLEAN POST CARDS */
+    .posts-clean-list { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+    .post-clean-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: inherit; transition: opacity var(--transition); }
+    .post-clean-card:hover { opacity: 0.75; }
+    .post-clean-body { flex: 1; }
+    .post-clean-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 500; color: var(--ink); margin-bottom: 4px; line-height: 1.35; transition: color var(--transition); }
+    .post-clean-card:hover .post-clean-title { color: var(--maroon); }
+    .post-clean-desc { font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; }
+    .post-clean-arrow { font-size: 1.1rem; color: var(--maroon); flex-shrink: 0; transition: transform var(--transition); }
+    .post-clean-card:hover .post-clean-arrow { transform: translateX(4px); }
+
+    /* FOOTER */
+    footer { background: var(--dark-hero); border-top: 1px solid rgba(255,255,255,0.05); padding: 22px 56px; display: flex; align-items: center; justify-content: center; }
+    footer p { font-size: 0.73rem; color: rgba(255,255,255,0.28); }
+
+    /* BACK TO TOP */
+    #back-to-top { position: fixed; bottom: 28px; right: 28px; width: 40px; height: 40px; background: var(--maroon); color: #fff; border: none; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(12px); transition: all var(--transition); z-index: 200; box-shadow: var(--shadow); }
     #back-to-top.visible { opacity: 1; transform: translateY(0); }
     #back-to-top:hover { background: var(--maroon-light); transform: translateY(-2px); }
 
-    /* ── FADE IN ── */
-    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .fade-in.visible { opacity: 1; transform: none; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 760px) {
-      nav { padding: 0 24px; }
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      .nav-inner { padding: 0 24px; }
       .nav-links { display: none; }
-      .hero-section { padding: 48px 24px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
-      .hero-photo { width: 140px; height: 140px; }
-      .main { padding: 0 24px 60px; }
-      .posts-grid { grid-template-columns: 1fr; }
+      .hero-content { grid-template-columns: 1fr; padding: 90px 24px 60px; min-height: auto; }
+      .hero-right { display: none; }
+      .section-inner { padding: 0 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .cv-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr 1fr; }
+      .pres-card { grid-template-columns: 48px 1fr; }
+      .pres-type { display: none; }
       .contact-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 8px; padding: 24px; text-align: center; }
+      footer { padding: 20px 24px; }
+    }
+    @media (max-width: 520px) {
+      .awards-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -188,15 +337,13 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="#about" class="nav-name">Pragati Dahal</a>
+      <a href="#about" class="nav-name">Pragati <span>Dahal</span></a>
       <ul class="nav-links">
-        <li><a href="#about">Home</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#posts">Posts</a></li>
         <li><a href="#research">Research</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#awards">Awards</a></li>
         <li><a href="CV.pdf" target="_blank">CV</a></li>
-        <li><a href="#conferences">Presentations</a></li>
+        <li><a href="#awards">Awards</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -204,218 +351,411 @@
 
   <!-- HERO -->
   <section id="about">
-    <div class="hero-section">
-      <div class="hero-inner">
-        <div class="hero-left">
-          <img src="Profile_pic.jpg" alt="Pragati Dahal" class="hero-photo" />
-          <div class="hero-socials">
-            <a href="https://linkedin.com/in/pragatidahal9843" target="_blank" class="social-icon" title="LinkedIn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-            </a>
-            <a href="https://github.com/pdahal23" target="_blank" class="social-icon" title="GitHub">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-            </a>
-            <a href="https://scholar.google.com/citations?user=bQwtrm8AAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
-            </a>
-          </div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-badge">PhD Student &middot; Virginia Tech</div>
+        <h1 class="hero-name">
+          Pragati
+          <span class="last">Dahal</span>
+        </h1>
+        <p class="hero-tagline">Applied Economist</p>
+        <p class="hero-bio">
+          I am a first-year PhD student in Agricultural and Applied Economics at
+          <a href="https://www.aaec.vt.edu/" target="_blank">Virginia Tech</a>,
+          working as a Graduate Research Assistant with
+          <a href="https://www.lewangecon.com/" target="_blank">Dr. Le Wang</a>.
+          My research sits at the intersection of health economics, labor economics,
+          and causal inference, with a focus on how digital infrastructure shapes
+          wellbeing in rural and underserved communities.
+        </p>
+        <div class="hero-ctas">
+          <a href="#research" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            View Research
+          </a>
+          <a href="CV.pdf" target="_blank" class="btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download CV
+          </a>
         </div>
-        <div class="hero-right">
-          <h1>Pragati <em>Dahal</em></h1>
-          <div class="hero-role">PhD Student &middot; Agricultural &amp; Applied Economics &middot; Virginia Tech</div>
-          <p class="hero-bio">I am a first-year PhD student in Agricultural and Applied Economics at <a href="https://www.aaec.vt.edu/" target="_blank">Virginia Tech</a>, working as a Graduate Research Assistant with <a href="https://www.lewangecon.com/" target="_blank">Dr. Le Wang</a>.</p>
-          <p class="hero-bio">I am building a space where I can share what I learn and work on throughout my PhD journey, including <a href="https://github.com/pdahal23" target="_blank">codes</a>, tutorials, and lecture notes.</p>
-          <a href="CV.pdf" target="_blank" class="hero-cv">Download CV</a>
-        </div>
+      </div>
+      <div class="hero-right">
+        <img src="Profile_pic.jpg" alt="Pragati Dahal" class="hero-photo-plain" />
       </div>
     </div>
   </section>
 
-  <div class="main">
-
-    <!-- POSTS -->
-    <div class="section fade-in" id="posts">
-      <div class="section-header">
-        <span class="section-num">01</span>
-        <h2>Posts</h2>
-      </div>
-      <div class="section-body">
-      <div class="posts-grid">
-        <a href="https://github.com/pdahal23" target="_blank" class="post-card">
-          <div class="post-card-thumb"><span>Coming Soon</span></div>
-          <div class="post-card-body">
-            <div class="post-card-date">Coming 2026</div>
-            <div class="post-card-title">Causal Inference for Undergrads: What the Data Is Actually Telling You</div>
-            <div class="post-card-desc">An accessible introduction to causal inference &mdash; the difference between correlation and causation, and why it matters for policy.</div>
+  <!-- ABOUT -->
+  <div class="page-section light fade-in" id="about-body">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <span class="section-eyebrow on-light">About Me</span>
+          <h2 class="section-title on-light" style="font-size:2rem;margin-bottom:22px;">Economist. Researcher.<br>Data Scientist.</h2>
+          <div class="about-body">
+            <p>I am a first-year PhD student in <strong>Agricultural and Applied Economics</strong> at Virginia Tech, working under the supervision of <strong><a href="https://www.lewangecon.com/" target="_blank">Dr. Le Wang</a></strong>. My research lies at the intersection of applied econometrics, causal inference, health economics, and labor economics.</p>
+            <p>I worked as the <strong>Graduate Lead for Data Science for the Public Good (DSPG) 2026</strong>, co-mentoring with spatial and statistics leads on an Appalachian infrastructure-to-health outcomes project with Ballad Health as primary stakeholder.</p>
+            <p>Prior to Virginia Tech, I completed an <strong>M.S. in Applied Economics</strong> at the University of Idaho (advised by Dr. Christopher McIntosh and Dr. Alex Maas), and hold a <strong>B.Sc. in Agriculture</strong> from Agriculture and Forestry University, Nepal.</p>
           </div>
-        </a>
-        <a href="https://github.com/pdahal23" target="_blank" class="post-card">
-          <div class="post-card-thumb"><span>Coming Soon</span></div>
-          <div class="post-card-body">
-            <div class="post-card-date">Coming 2026</div>
-            <div class="post-card-title">How to Summarize and Visualize Data: A DSPG Lecture</div>
-            <div class="post-card-desc">Lecture notes and code from the DSPG Summer 2026 workshop on exploratory data analysis and visualization.</div>
+        </div>
+        <div>
+          <div class="skills-panel">
+            <span class="skills-heading">Technical Toolkit</span>
+            <div class="skill-group">
+              <span class="skill-group-label">Programming</span>
+              <div class="skill-tags">
+                <span class="skill-tag">R</span>
+                <span class="skill-tag">Stata</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <span class="skill-group-label">Econometrics</span>
+              <div class="skill-tags">
+                <span class="skill-tag">DiD / CS-DiD</span>
+                <span class="skill-tag">TWFE</span>
+                <span class="skill-tag">IV</span>
+                <span class="skill-tag">Panel Data</span>
+                <span class="skill-tag">Event Study</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <span class="skill-group-label">Tools</span>
+              <div class="skill-tags">
+                <span class="skill-tag">tidycensus</span>
+                <span class="skill-tag">Quarto</span>
+                <span class="skill-tag">R Shiny</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">ggplot2</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <span class="skill-group-label">Data Sources</span>
+              <div class="skill-tags">
+                <span class="skill-tag">FCC Form 477</span>
+                <span class="skill-tag">ACS / Census</span>
+                <span class="skill-tag">CHR / PLACES</span>
+              </div>
+            </div>
           </div>
-        </a>
-      </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- RESEARCH -->
-    <div class="section fade-in" id="research">
-      <div class="section-header">
-        <span class="section-num">02</span>
-        <h2>Research</h2>
+  <!-- POSTS -->
+  <div class="page-section mid fade-in" id="posts">
+    <div class="section-inner">
+      <span class="section-eyebrow on-light">Writing &amp; Notes</span>
+      <h2 class="section-title on-light" style="font-size:2rem;margin-bottom:8px;">Posts</h2>
+      <p class="section-sub on-light" style="margin-bottom:36px;">Notes, tutorials, and lecture materials from my research and teaching.</p>
+      <div class="posts-clean-list">
+        <a href="https://github.com/pdahal23" target="_blank" class="post-clean-card">
+          <div class="post-clean-body">
+            <div class="post-clean-title">Causal Inference for Undergrads: What the Data Is Actually Telling You</div>
+            <div class="post-clean-desc">An accessible introduction to causal inference &mdash; the difference between correlation and causation, and why it matters for policy.</div>
+          </div>
+          <span class="post-clean-arrow">→</span>
+        </a>
+        <a href="https://pdahal23.github.io/DSPG26Data-Organization-Workshop/data_organization_workshop_reference.html" target="_blank" class="post-clean-card">
+          <div class="post-clean-body">
+            <div class="post-clean-title">How to Summarize and Visualize Data: A DSPG Lecture</div>
+            <div class="post-clean-desc">Materials and codes from the DSPG Summer 2026 workshop on exploratory data summarization and visualization.</div>
+          </div>
+          <span class="post-clean-arrow">→</span>
+        </a>
       </div>
-      <div class="section-body">
-      <p style="font-size:1.05rem;color:var(--ink-soft);margin-bottom:28px;">My research interests lie at the intersection of applied econometrics, causal inference, health economics, and labor economics.</p>
-      <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--ink);letter-spacing:-0.01em;margin-bottom:0;padding-bottom:10px;border-bottom:1px solid var(--rule);">Work in Progress</h3>
-      <div class="research-list">
+    </div>
+  </div>
 
-        <div class="research-item">
-          <div class="research-item-inner">
-            <div>
-              <div class="research-title" onclick="toggleAbstract(this)">Broadband Expansion and Mental Health Outcomes: Causal Evidence from U.S. Counties</div>
-              <div class="research-status">Work in Progress</div>
-              <div class="research-abstract">We examine the impact of broadband expansion on mental health in U.S. counties. Improved internet access may benefit mental health through telehealth and health information, yet it may also harm it through social displacement and screen-time effects, leaving the net effect theoretically ambiguous. We build a county-year panel (2008&ndash;2025) combining FCC broadband data with County Health Rankings, CDC PLACES, and ACS data. Exploiting staggered adoption of higher-speed thresholds across counties in a difference-in-differences framework, we estimate causal effects on outcomes such as frequent mental distress and poor mental health days. We further use causal forest methods to characterize treatment effect heterogeneity and identify who experiences the largest impacts.</div>
-              <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
-                <span class="research-toggle-icon">&#9660;</span> Abstract
-              </button>
+  <!-- RESEARCH -->
+  <div class="page-section light fade-in" id="research" style="background:var(--cream-dark);padding-top:80px;">
+    <div class="section-inner">
+      <div class="centered">
+        <span class="section-eyebrow on-light">Research</span>
+        <h2 class="section-title on-light">Publications &amp; Presentations</h2>
+        <p class="section-sub on-light">Working papers, manuscripts under review, and conference work. Click any paper to expand its abstract.</p>
+      </div>
+      <div class="research-filters">
+        <button class="filter-btn active" onclick="filterResearch('all',this)">All</button>
+        <button class="filter-btn" onclick="filterResearch('wip',this)">Work in Progress</button>
+        <button class="filter-btn" onclick="filterResearch('rr',this)">Under Review</button>
+        <button class="filter-btn" onclick="filterResearch('ms',this)">Manuscript</button>
+      </div>
+      <div class="research-cards" id="researchCards">
+
+        <div class="research-card" data-type="wip">
+          <div class="research-card-header" onclick="toggleCard(this)">
+            <div class="research-card-left">
+              <div class="research-badges">
+                <span class="badge badge-wip">Work in Progress</span>
+              </div>
+              <div class="research-card-title">Broadband Expansion and Mental Health Outcomes: Causal Evidence from U.S. Counties</div>
+              <div class="research-card-venue">with Dr. Le Wang &middot; Virginia Tech</div>
+            </div>
+            <button class="expand-btn">+</button>
+          </div>
+          <div class="research-card-body">
+            <div class="research-card-body-inner">
+              <p class="research-abstract-text">We examine the impact of broadband expansion on mental health in U.S. counties. Improved internet access may benefit mental health through telehealth and health information, yet it may also harm it through social displacement and screen-time effects, leaving the net effect theoretically ambiguous. We build a county-year panel (2008&ndash;2025) combining FCC broadband data with County Health Rankings, CDC PLACES, and ACS data. Exploiting staggered adoption of higher-speed thresholds across counties in a difference-in-differences framework, we estimate causal effects on outcomes such as frequent mental distress and poor mental health days. We further use causal forest methods to characterize treatment effect heterogeneity and identify who experiences the largest impacts.</p>
               <div class="research-links">
-                <a href="https://github.com/pdahal23/Broadband-and-MentalHealth" target="_blank" class="research-link">Code</a>
+                <a href="https://github.com/pdahal23/Broadband-and-MentalHealth" target="_blank" class="research-link">Code &rarr;</a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="research-item">
-          <div class="research-item-inner">
-            <div>
-              <div class="research-title" onclick="toggleAbstract(this)">Running up that Hill: Campaign Funds for Childcare and Women&rsquo;s Representation at the Local, State and Federal Level</div>
-              <div class="research-status">Submitted &middot; Gender and Politics</div>
-              <div class="research-abstract">Despite substantial gains in education and workforce participation, women in the United States remain persistently underrepresented in political office. This study examines whether Campaign Funds for Childcare (CFCC) policies influence the share of women running for elected positions, drawing on three complementary datasets that capture variation across federal, state, and local elections. CFCC policies permit candidates to use campaign resources for childcare, easing potential burdens that disproportionately fall on women and potentially lowering barriers to entry. Using Two-Way Fixed Effects and staggered Difference-in-Differences estimators, we find overall evidence of policy effects to be weak and statistically insignificant among federal and state elections. However, in local elections, the earliest cohort of treated jurisdictions exhibits a notable increase in female participation approximately four years after policy implementation, indicating that heterogeneous or delayed responses may exist even if broad, systematic effects remain limited.</div>
-              <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
-                <span class="research-toggle-icon">&#9660;</span> Abstract
-              </button>
+        <div class="research-card" data-type="rr">
+          <div class="research-card-header" onclick="toggleCard(this)">
+            <div class="research-card-left">
+              <div class="research-badges">
+                <span class="badge badge-rr">Revise &amp; Resubmit</span>
+                <span class="badge badge-ms">State Politics and Policy Quarterly</span>
+              </div>
+              <div class="research-card-title">Running up that Hill: Campaign Funds for Childcare and Women&rsquo;s Representation at the Local, State and Federal Level</div>
+              <div class="research-card-venue">with Alex Maas</div>
+            </div>
+            <button class="expand-btn">+</button>
+          </div>
+          <div class="research-card-body">
+            <div class="research-card-body-inner">
+              <p class="research-abstract-text">Despite substantial gains in education and workforce participation, women in the United States remain persistently underrepresented in political office. This study examines whether Campaign Funds for Childcare (CFCC) policies influence the share of women running for elected positions, drawing on three complementary datasets that capture variation across federal, state, and local elections. CFCC policies permit candidates to use campaign resources for childcare, easing potential burdens that disproportionately fall on women and potentially lowering barriers to entry. Using Two-Way Fixed Effects and staggered Difference-in-Differences estimators, we find overall evidence of policy effects to be weak and statistically insignificant among federal and state elections. However, in local elections, the earliest cohort of treated jurisdictions exhibits a notable increase in female participation approximately four years after policy implementation, indicating that heterogeneous or delayed responses may exist even if broad, systematic effects remain limited.</p>
             </div>
           </div>
         </div>
 
-        <div class="research-item">
-          <div class="research-item-inner">
-            <div>
-              <div class="research-title" onclick="toggleAbstract(this)">Economic Efficiency of Mineral Oil&ndash;Insecticide Combinations in PVY Management</div>
-              <div class="research-status">Manuscript &middot; Work in Progress</div>
-              <div class="research-abstract">Potato Virus Y (PVY) is one of the most economically significant pathogens in seed potato systems, causing substantial yield losses and seed certification downgrades. This paper evaluates the economic efficiency of six PVY management strategies involving mineral oils and insecticides, using multi-year field trial data from Idaho. A partial budgeting approach is applied to assess trade-offs between PVY suppression and net revenue. Results show that while certain treatment combinations effectively reduce virus incidence, the at-plant insecticide plus weekly oil treatment generates the highest net revenue across potato size classes. Intensive insecticide-oil combinations prove cost-ineffective under commercial production conditions, underscoring the need for cost-conscious management practices.</div>
-              <button class="research-toggle" onclick="toggleAbstract(this.previousElementSibling.previousElementSibling.previousElementSibling)">
-                <span class="research-toggle-icon">&#9660;</span> Abstract
-              </button>
+        <div class="research-card" data-type="ms">
+          <div class="research-card-header" onclick="toggleCard(this)">
+            <div class="research-card-left">
+              <div class="research-badges">
+                <span class="badge badge-ms">Manuscript</span>
+              </div>
+              <div class="research-card-title">Economic Efficiency of Mineral Oil&ndash;Insecticide Combinations in PVY Management</div>
+              <div class="research-card-venue">with Christopher McIntosh &middot; University of Idaho</div>
+            </div>
+            <button class="expand-btn">+</button>
+          </div>
+          <div class="research-card-body">
+            <div class="research-card-body-inner">
+              <p class="research-abstract-text">Potato Virus Y (PVY) is one of the most economically significant pathogens in seed potato systems, causing substantial yield losses and seed certification downgrades. This paper evaluates the economic efficiency of six PVY management strategies involving mineral oils and insecticides, using multi-year field trial data from Idaho. A partial budgeting approach is applied to assess trade-offs between PVY suppression and net revenue. Results show that while certain treatment combinations effectively reduce virus incidence, the at-plant insecticide plus weekly oil treatment generates the highest net revenue across potato size classes. Intensive insecticide-oil combinations prove cost-ineffective under commercial production conditions, underscoring the need for cost-conscious management practices.</p>
             </div>
           </div>
         </div>
 
       </div>
-      </div>
     </div>
+  </div>
 
-    <!-- EXPERIENCE -->
-    <div class="section fade-in" id="experience">
-      <div class="section-header">
-        <span class="section-num">03</span>
-        <h2>Experience</h2>
+  <!-- CV / EXPERIENCE -->
+  <div class="page-section dark fade-in" id="experience">
+    <div class="section-inner">
+      <div class="cv-header-row">
+        <div>
+          <span class="section-eyebrow">Curriculum Vitae</span>
+          <h2 class="section-title on-dark">Education &amp; Experience</h2>
+        </div>
+        <a href="CV.pdf" target="_blank" class="btn-primary" style="align-self:flex-end;margin-bottom:4px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Full CV (PDF)
+        </a>
       </div>
-      <div class="section-body">
-      <div class="experience-list">
-        <div class="exp-item">
-          <div class="exp-left">2025&ndash;Present</div>
-          <div>
-            <div class="exp-title">Graduate Research Assistant</div>
-            <div class="exp-meta">Dept. of Agricultural and Applied Economics, Virginia Tech</div>
+      <div class="cv-grid">
+        <div>
+          <span class="cv-col-label">Education</span>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-date">Aug 2025 &ndash; Present</div>
+                <div class="timeline-title">Ph.D., Agricultural &amp; Applied Economics</div>
+                <div class="timeline-meta">Virginia Tech, Blacksburg, VA<br>Advisor: Dr. Le Wang</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-date">2023 &ndash; 2025</div>
+                <div class="timeline-title">M.S., Applied Economics</div>
+                <div class="timeline-meta">University of Idaho<br>Advisor: Dr. Christopher McIntosh</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-date">2017 &ndash; 2022</div>
+                <div class="timeline-title">B.Sc., Agriculture</div>
+                <div class="timeline-meta">Agriculture and Forestry University, Nepal<br>Full Scholarship</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="exp-item">
-          <div class="exp-left">2026</div>
-          <div>
-            <div class="exp-title">Graduate Lead, Data Science for the Public Good (DSPG)</div>
-            <div class="exp-meta">Kohl Center, Dept. of Agricultural and Applied Economics, Virginia Tech</div>
+        <div>
+          <span class="cv-col-label">Research Experience</span>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-date">2025 &ndash; Present</div>
+                <div class="timeline-title">Graduate Research Assistant</div>
+                <div class="timeline-meta">Dept. of Agricultural and Applied Economics<br>Virginia Tech</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-date">Summer 2026</div>
+                <div class="timeline-title">Graduate Lead, DSPG</div>
+                <div class="timeline-meta">Kohl Center, Dept. of AAEC<br>Virginia Tech</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-body">
+                <div class="timeline-date">2023 &ndash; 2025</div>
+                <div class="timeline-title">Graduate Research Assistant</div>
+                <div class="timeline-meta">Dept. of Agricultural Economics and Rural Sociology<br>University of Idaho</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="exp-item">
-          <div class="exp-left">2023&ndash;2025</div>
-          <div>
-            <div class="exp-title">Graduate Research Assistant</div>
-            <div class="exp-meta">Dept. of Agricultural Economics and Rural Sociology, University of Idaho</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AWARDS + PRESENTATIONS -->
+  <div class="page-section light fade-in" id="awards">
+    <div class="section-inner">
+      <div class="centered">
+        <span class="section-eyebrow on-light">Recognition</span>
+        <h2 class="section-title on-light">Awards &amp; Honors</h2>
+        <p class="section-sub on-light">Academic recognition and scholarships received throughout my career.</p>
+      </div>
+      <div class="awards-grid">
+        <div class="award-card">
+          <span class="award-icon">🏅</span>
+          <span class="award-year-tag">2024/25</span>
+          <div class="award-name"><a href="https://spudman.com/news/u-of-i-student-to-use-scholarship-to-probe-potato-seed-health/" target="_blank">Joe and Terri Guenthner Graduate Scholarship</a></div>
+          <div class="award-meta">College of Agricultural and Life Sciences, University of Idaho</div>
+        </div>
+        <div class="award-card">
+          <span class="award-icon">🎓</span>
+          <span class="award-year-tag">2017–22</span>
+          <div class="award-name">Full Scholarship, BS Agriculture</div>
+          <div class="award-meta">Agriculture and Forestry University, Nepal</div>
+        </div>
+        <div class="award-card featured">
+          <span class="award-icon">🥇</span>
+          <span class="award-year-tag">2015</span>
+          <div class="award-name">Gold Medal in Science (98/100)</div>
+          <div class="award-meta">Private and Boarding School Organization Nepal &middot; All over Nepal</div>
+        </div>
+      </div>
+
+      <div style="margin-top:56px;">
+        <span class="section-eyebrow on-light" style="margin-bottom:20px;display:block;">Presentations</span>
+        <div class="pres-list" style="margin-top:0;">
+          <div class="pres-card">
+            <div class="pres-year">2024</div>
+            <div>
+              <div class="pres-title">The Impact of Campaign Funds for Childcare Policies on Female Representation</div>
+              <div class="pres-venue">Pragati Dahal, Alex Maas &middot; Western Agricultural Economics Association (WAEA), June 23&ndash;25, 2024</div>
+            </div>
+            <div class="pres-type">Conference</div>
+          </div>
+          <div class="pres-card">
+            <div class="pres-year">2025</div>
+            <div>
+              <div class="pres-title">Economic Efficiency of Mineral Oil-Insecticide Combinations in the Management of PVY</div>
+              <div class="pres-venue">Pragati Dahal, Christopher McIntosh &middot; <em>Potato Expo</em>, Orlando, FL, January 9&ndash;10, 2025</div>
+            </div>
+            <a href="https://www.dropbox.com/scl/fi/4d6y7fh8yd651lfi4xjue/Economic-Efficiency-of-Mineral-Oil-Insecticide-Combinations-in-the-Management-of-PVY.pptx?rlkey=80rcpm230rp5nidgdflrh9gm2&st=w8bmprfy&dl=0" target="_blank" class="pres-type">Poster</a>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="page-section dark fade-in" id="contact">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div>
+          <span class="section-eyebrow">Get in Touch</span>
+          <h2 class="contact-heading">Let's Connect</h2>
+          <p class="contact-body">I welcome inquiries about research collaborations, graduate opportunities, or questions about my work in applied economics and causal inference.</p>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-icon-wrap">✉</div>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Email</span>
+                <span class="contact-detail-value"><a id="email-display" href="#">&nbsp;</a></span>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-icon-wrap">📍</div>
+              <div class="contact-detail-text">
+                <span class="contact-detail-label">Department</span>
+                <span class="contact-detail-value">Agricultural &amp; Applied Economics<br>Virginia Tech, Blacksburg, VA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <span class="find-online-label">Find Me Online</span>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/pragatidahal9843" target="_blank" class="social-link">
+              <div class="social-link-left">
+                <div class="social-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                </div>
+                <div>
+                  <div class="social-link-name">LinkedIn</div>
+                  <div class="social-link-sub">/in/pragatidahal9843</div>
+                </div>
+              </div>
+              <span class="social-arrow">→</span>
+            </a>
+            <a href="https://github.com/pdahal23" target="_blank" class="social-link">
+              <div class="social-link-left">
+                <div class="social-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                </div>
+                <div>
+                  <div class="social-link-name">GitHub</div>
+                  <div class="social-link-sub">github.com/pdahal23</div>
+                </div>
+              </div>
+              <span class="social-arrow">→</span>
+            </a>
+            <a href="https://scholar.google.com/citations?user=bQwtrm8AAAAJ&hl=en" target="_blank" class="social-link">
+              <div class="social-link-left">
+                <div class="social-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 10a8 8 0 0 1 7.162 3.44L24 9.5z"/></svg>
+                </div>
+                <div>
+                  <div class="social-link-name">Google Scholar</div>
+                  <div class="social-link-sub">View Publications</div>
+                </div>
+              </div>
+              <span class="social-arrow">→</span>
+            </a>
+            <a href="CV.pdf" target="_blank" class="social-link">
+              <div class="social-link-left">
+                <div class="social-link-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <div>
+                  <div class="social-link-name">Curriculum Vitae</div>
+                  <div class="social-link-sub">Download PDF</div>
+                </div>
+              </div>
+              <span class="social-arrow">→</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- AWARDS -->
-    <div class="section fade-in" id="awards">
-      <div class="section-header">
-        <span class="section-num">04</span>
-        <h2>Awards &amp; Honors</h2>
-      </div>
-      <div class="section-body">
-      <div class="awards-list">
-        <div class="award-item">
-          <span class="award-year">2024/25</span>
-          <span class="award-name"><a href="https://spudman.com/news/u-of-i-student-to-use-scholarship-to-probe-potato-seed-health/" target="_blank" style="color:var(--maroon);text-decoration:none;">Joe and Terri Guenthner Graduate Scholarship</a></span>
-          <span class="award-org">College of Agricultural and Life Sciences, University of Idaho</span>
-        </div>
-        <div class="award-item">
-          <span class="award-year">2017–22</span>
-          <span class="award-name">Full Scholarship, BS Agriculture</span>
-          <span class="award-org">Agriculture and Forestry University, Nepal</span>
-        </div>
-        <div class="award-item">
-          <span class="award-year">2015</span>
-          <span class="award-name">Gold Medal in Science (98/100), All over Nepal</span>
-          <span class="award-org">Private and Boarding School Organization Nepal</span>
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <!-- CONFERENCES -->
-    <div class="section fade-in" id="conferences">
-      <div class="section-header">
-        <span class="section-num">05</span>
-        <h2>Presentations</h2>
-      </div>
-      <div class="section-body">
-      <div class="awards-list">
-        <div class="award-item">
-          <span class="award-year">2024</span>
-          <span class="award-name">Pragati Dahal, Alex Maas. &ldquo;Running up that Hill: Campaign Funds for Childcare and Women&rsquo;s Representation at the Local, State and Federal Level.&rdquo; <em>Western Agricultural Economics Association (WAEA)</em>, June 23&ndash;25, 2024.</span>
-          <span class="award-org">Conference Presentation</span>
-        </div>
-        <div class="award-item">
-          <span class="award-year">2025</span>
-          <span class="award-name">Pragati Dahal, Christopher McIntosh. &ldquo;Economic Efficiency of Mineral Oil-Insecticide Combinations in the Management of PVY.&rdquo; <em>Potato Expo</em>, Orlando, FL, January 9&ndash;10, 2025.</span>
-          <span class="award-org"><a href="https://www.dropbox.com/scl/fi/4d6y7fh8yd651lfi4xjue/Economic-Efficiency-of-Mineral-Oil-Insecticide-Combinations-in-the-Management-of-PVY.pptx?rlkey=80rcpm230rp5nidgdflrh9gm2&st=w8bmprfy&dl=0" target="_blank" style="color:var(--maroon);text-decoration:none;">Poster Presentation</a></span>
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="section fade-in" id="contact">
-      <div class="section-header">
-        <span class="section-num">05</span>
-        <h2>Contact</h2>
-      </div>
-      <div class="section-body">
-      <p class="contact-intro">I welcome inquiries about research collaboration and academic opportunities.</p>
-      <div class="contact-list">
-        <div class="contact-item"><span class="contact-icon">✉</span><a id="email-display" href="#">&nbsp;</a></div>
-        <div class="contact-item"><span class="contact-icon">🌐</span><a href="https://pdahal23.github.io" target="_blank">pdahal23.github.io</a></div>
-        <div class="contact-item"><span class="contact-icon">📍</span><span>Dept. of Agricultural &amp; Applied Economics, Virginia Tech, Blacksburg, VA</span></div>
-      </div>
-      </div>
-    </div>
-
   </div>
 
   <footer>
@@ -429,36 +769,49 @@
     document.getElementById('email-display').textContent=e;
     document.getElementById('email-display').href='mailto:'+e;
 
-    function toggleAbstract(titleEl) {
-      var item = titleEl.closest('.research-item');
-      var abstract = item.querySelector('.research-abstract');
-      var toggle = item.querySelector('.research-toggle');
-      abstract.classList.toggle('open');
-      toggle.classList.toggle('open');
+    function toggleCard(headerEl) {
+      var card = headerEl.closest('.research-card');
+      var body = card.querySelector('.research-card-body');
+      var btn = card.querySelector('.expand-btn');
+      var isOpen = body.classList.contains('open');
+      document.querySelectorAll('.research-card-body.open').forEach(function(b){ b.classList.remove('open'); });
+      document.querySelectorAll('.expand-btn.open').forEach(function(b){ b.classList.remove('open'); });
+      if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
     }
 
-    var sections = document.querySelectorAll('[id]');
+    function filterResearch(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.research-card').forEach(function(card){
+        card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+      });
+    }
+
     var navLinks = document.querySelectorAll('.nav-links a');
     function updateNav() {
-      var current = '';
-      sections.forEach(function(s) { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
-      navLinks.forEach(function(a) {
+      var scrollY = window.scrollY + 80;
+      var current = 'about';
+      ['about','about-body','posts','research','experience','awards','contact'].forEach(function(id){
+        var el = document.getElementById(id);
+        if (el && scrollY >= el.offsetTop) current = id;
+      });
+      navLinks.forEach(function(a){
         a.classList.toggle('active', a.getAttribute('href') === '#' + current);
       });
     }
 
     var btt = document.getElementById('back-to-top');
-    function updateBTT() { btt.classList.toggle('visible', window.scrollY > 400); }
+    function updateBTT(){ btt.classList.toggle('visible', window.scrollY > 400); }
 
     var fadeEls = document.querySelectorAll('.fade-in');
-    function checkFade() {
-      fadeEls.forEach(function(el) {
+    function checkFade(){
+      fadeEls.forEach(function(el){
         if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('visible');
       });
     }
 
-    window.addEventListener('scroll', function() { updateNav(); updateBTT(); checkFade(); });
-    checkFade();
+    window.addEventListener('scroll', function(){ updateNav(); updateBTT(); checkFade(); });
+    checkFade(); updateNav();
   </script>
 
 </body>
